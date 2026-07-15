@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regalería San Juan Diego</title>
+  <meta name="description" content="Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica. Vive, comparte, regala.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --color-bordo: #2c5282;
+      --color-gold: #c6a664;
+      --color-gold-light: #e6cd8e;
+      --color-earth: #4a5568;
+      --bg-main: #f7fafc;
+      --bg-card: #ffffff;
+      --text-dark: #1a202c;
+      --text-light: #718096;
+      --header-g1: rgba(44, 82, 130, 0.88);
+      --header-g2: rgba(144, 205, 244, 0.88);
+      --font-title: 'Cinzel', serif;
+      --font-serif: 'Lora', serif;
+      --font-sans: 'Montserrat', sans-serif;
+      --shadow: 0 8px 32px rgba(44,82,130,0.15);
+      --radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1548625361-9122119eb42b?q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, var(--header-g1) 0%, var(--header-g2) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem 1.5rem;
+      max-width: 750px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-icon {
+      font-size: 3.5rem;
+      color: var(--color-gold-light);
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    .brand-name {
+      font-family: var(--font-title);
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      letter-spacing: 3px;
+      color: var(--color-gold-light);
+      text-shadow: 2px 4px 12px rgba(0,0,0,0.4);
+      margin-bottom: 0.4rem;
+    }
+
+    .brand-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      opacity: 0.92;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+    }
+
+    .brand-desc {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      opacity: 0.85;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    /* ── BOTONES HERO ── */
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: var(--color-gold);
+      color: #1a202c;
+      box-shadow: 0 4px 16px rgba(198,166,100,0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-gold-light);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(198,166,100,0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.28);
+      transform: translateY(-3px);
+    }
+
+    .btn-disabled {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.45);
+      border: 2px dashed rgba(255,255,255,0.3);
+      cursor: not-allowed;
+    }
+
+    /* ── REDES SOCIALES HERO ── */
+    .social-row {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+    }
+
+    .social-row a {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.6rem;
+      transition: var(--transition);
+    }
+
+    .social-row a:hover {
+      color: var(--color-gold-light);
+      transform: translateY(-4px) scale(1.15);
+    }
+
+    /* ── SECCIÓN CONTACTO ── */
+    .contact-section {
+      background: var(--bg-card);
+      padding: 5rem 1.5rem;
+      text-align: center;
+      box-shadow: inset 0 4px 20px rgba(44,82,130,0.06);
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      color: var(--color-bordo);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--color-gold);
+      margin: 0.8rem auto 2.5rem;
+      border-radius: 2px;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: var(--bg-main);
+      border-radius: var(--radius);
+      padding: 1.8rem 2.2rem;
+      min-width: 180px;
+      flex: 1;
+      max-width: 220px;
+      text-decoration: none;
+      color: var(--text-dark);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      border: 1px solid rgba(44,82,130,0.1);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(44,82,130,0.18);
+    }
+
+    .contact-card .icon {
+      font-size: 2.2rem;
+    }
+
+    .contact-card .label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-card.whatsapp { border-top: 4px solid #25D366; }
+    .contact-card.whatsapp .icon { color: #25D366; }
+    .contact-card.facebook { border-top: 4px solid #1877F2; }
+    .contact-card.facebook .icon { color: #1877F2; }
+    .contact-card.instagram { border-top: 4px solid #E4405F; }
+    .contact-card.instagram .icon { color: #E4405F; }
+    .contact-card.youtube { border-top: 4px solid #FF0000; }
+    .contact-card.youtube .icon { color: #FF0000; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--color-bordo);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: 0.88rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+    }
+
+    footer span {
+      color: var(--color-gold-light);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="logo-icon"><i class="fas fa-cross"></i></div>
+
+      <h1 class="brand-name">San Juan Diego</h1>
+      <p class="brand-tagline">Vive, comparte, regala.</p>
+      <p class="brand-desc">Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica.</p>
+
+      <div class="hero-btns">
+        <a class="btn btn-primary"
+           href="https://script.google.com/macros/s/AKfycbyakJY1f84w-L5PQ14bosSssX91T_aXhKCeumGei_Bn5uH784s8ZSmIzIRPcArXlcjU/exec"
+           target="_blank">
+          <i class="fas fa-book-open"></i> Ver Catálogo
+        </a>
+        <a class="btn btn-disabled" href="#" onclick="return false;">
+          <i class="fas fa-lock"></i> Administración
+        </a>
+      </div>
+
+      <div class="social-row">
+        <a href="https://wa.me/543878230560" target="_blank" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/RegaleriaCatolicaSanJuanDiego" target="_blank" title="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/regaleriacatolicasanjuandiego/" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@regaleriasanjuandiego" target="_blank" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACTO ── -->
+  <section class="contact-section">
+    <h2 class="section-title">Encontranos en</h2>
+    <div class="section-divider"></div>
+
+    <div class="contact-grid">
+      <a class="contact-card whatsapp" href="https://wa.me/543878230560?text=Hola%20Regalería%20San%20Juan%20Diego!" target="_blank">
+        <i class="fab fa-whatsapp icon"></i>
+        <span class="label">WhatsApp</span>
+        <small>3878 230560</small>
+      </a>
+      <a class="contact-card facebook" href="https://www.facebook.com/RegaleriaCatolicaSanJuanDiego" target="_blank">
+        <i class="fab fa-facebook icon"></i>
+        <span class="label">Facebook</span>
+        <small>@RegaleriaCatolicaSanJuanDiego</small>
+      </a>
+      <a class="contact-card instagram" href="https://www.instagram.com/regaleriacatolicasanjuandiego/" target="_blank">
+        <i class="fab fa-instagram icon"></i>
+        <span class="label">Instagram</span>
+        <small>@regaleriacatolicasanjuandiego</small>
+      </a>
+      <a class="contact-card youtube" href="https://www.youtube.com/@regaleriasanjuandiego" target="_blank">
+        <i class="fab fa-youtube icon"></i>
+        <span class="label">YouTube</span>
+        <small>@regaleriasanjuandiego</small>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    &copy; <?= new Date().getFullYear() ?> <span>Regalería Católica San Juan Diego</span> — Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
