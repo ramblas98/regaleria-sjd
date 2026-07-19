@@ -226,12 +226,12 @@
     }
 
     .contact-card {
-      background: var(--bg-main);
+      background: var(--bg-card);
       border-radius: var(--radius);
       padding: 1.8rem 2.2rem;
-      min-width: 180px;
+      min-width: 140px;
       flex: 1;
-      max-width: 220px;
+      max-width: 180px;
       text-decoration: none;
       color: var(--text-dark);
       box-shadow: var(--shadow);
@@ -239,8 +239,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.8rem;
-      border: 1px solid rgba(44,82,130,0.1);
+      gap: 0.5rem;
+      border: 1px solid rgba(155,126,189,0.15);
+      overflow: hidden;
     }
 
     .contact-card:hover {
@@ -250,13 +251,39 @@
     }
 
     .contact-card .icon {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
+      transition: transform 0.3s ease;
     }
 
-    .contact-card .label {
+    /* Texto oculto por defecto, se revela en hover/active */
+    .contact-card .label,
+    .contact-card small {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      font-size: 0.9rem;
+      transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.3s ease;
+      margin: 0;
+    }
+
+    .contact-card:hover .label,
+    .contact-card:active .label {
+      max-height: 2rem;
+      opacity: 1;
+      margin-top: 0.4rem;
       font-weight: 600;
-      font-size: 0.95rem;
       letter-spacing: 0.5px;
+    }
+
+    .contact-card:hover small,
+    .contact-card:active small {
+      max-height: 2rem;
+      opacity: 0.75;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-card:hover .icon {
+      transform: scale(1.15);
     }
 
     .contact-card.whatsapp { border-top: 4px solid #25D366; }
