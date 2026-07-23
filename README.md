@@ -18,7 +18,7 @@ Landing Page (este repo - GitHub Pages)
     │
     ├──[Botón Catálogo]──► Google Apps Script (catálogo de productos)
     │
-    └──[Botón Administración]──► Google Apps Script (panel admin - en desarrollo)
+    └──[Botón Administración]──► Google Apps Script (panel admin)
 ```
 
 | Módulo | Tecnología | Hosting |
@@ -31,31 +31,28 @@ Landing Page (este repo - GitHub Pages)
 
 ## ✨ Contenido de la Landing
 
-- Hero con imagen de fondo, nombre, lema y descripción de la regalería
-- Botón de acceso directo al Catálogo
-- Botón de Administración (pendiente de desarrollo)
-- Tarjetas de contacto: WhatsApp, Facebook, Instagram, YouTube
-- Footer con año automático
+- **Hero Section:** Imagen de fondo, logotipo, lema y descripción de la regalería.
+- **Botones de Acción:** Acceso directo al Catálogo y al panel de Administración (protegido por credenciales).
+- **Redes Sociales (Hero):** Enlaces rápidos a las plataformas en el encabezado.
+- **Nuestra Misión:** Sección destacada que refleja el manifiesto de la marca, enfatizando el rol de la fe en lo cotidiano y cómo los objetos de la regalería buscan acercar corazones a Dios, inspirados en San Juan Diego.
+- **Tarjetas de contacto:** Enlaces visuales tipo "link-in-bio" hacia WhatsApp, Facebook, Instagram, YouTube.
+- **Footer:** Derechos reservados con año automático.
 
 ---
 
-## 🎨 Diseño
+## 🎨 Diseño y UX
 
-Paleta de colores del **Tema Mariano** (consistente con el catálogo):
-- Azul principal: `#2c5282`
-- Dorado: `#c6a664`
-- Crema: `#f7fafc`
-
-Tipografías: **Cinzel** (títulos) · **Lora** (subtítulos) · **Montserrat** (cuerpo)
+- **Colores Principales:** Tonos lilas (`#9B7EBD`, `#6E5394`, `#4A3560`) combinados con acentos dorados (`#D9B36C`, `#F2DAB3`).
+- **Tipografías:** **Playfair Display** (títulos, elegante y clásica) y **Montserrat** (cuerpo, moderna y legible).
+- **Componentes Dinámicos:** Fondos en gradiente fluido, efectos de hover en botones, revelación suave (fadeUp) al cargar la página y microinteracciones en las tarjetas de redes sociales.
 
 ---
 
 ## 🔄 Cómo actualizar el sitio
 
-1. Editar `index.html` localmente
-2. Ejecutar `git_manager.sh` desde el directorio del proyecto
-3. Hacer **commit** y **push** a la rama `main`
-4. GitHub Pages publica los cambios automáticamente en ~1-2 minutos
+1. Editar `index.html` localmente.
+2. Hacer **commit** y **push** a la rama `main` del repositorio `regaleria-sjd`.
+3. GitHub Pages publica los cambios automáticamente en ~1-2 minutos.
 
 ---
 
