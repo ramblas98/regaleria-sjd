@@ -1276,6 +1276,177 @@ body.dark-theme .mision-title {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* ============================================================================
+   MODAL SELECTOR DE NAVEGADORES PARA ADMIN
+   ============================================================================ */
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 36, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3600;
+  padding: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+
+.admin-modal.hidden {
+  display: none !important;
+}
+
+.admin-modal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius);
+  max-width: 480px;
+  width: 100%;
+  padding: 2.2rem 1.8rem 1.8rem;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  animation: fadeUp 0.3s ease both;
+  text-align: center;
+}
+
+.admin-header-icon {
+  font-size: 2.4rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.6rem;
+  display: inline-block;
+  filter: drop-shadow(0 2px 8px rgba(217, 179, 108, 0.4));
+}
+
+.admin-modal-title {
+  font-family: var(--font-title);
+  color: var(--color-primary);
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+body.dark-theme .admin-modal-title {
+  color: var(--color-secondary-light);
+}
+
+.admin-modal-subtitle {
+  color: var(--text-light);
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.admin-browser-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+@media (max-width: 420px) {
+  .admin-browser-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.browser-btn {
+  background: rgba(155, 126, 189, 0.08);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 0.9rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  font-family: var(--font-sans);
+}
+
+body.dark-theme .browser-btn {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.browser-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-secondary);
+  background: rgba(217, 179, 108, 0.12);
+}
+
+.browser-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.browser-btn:hover .browser-icon {
+  transform: scale(1.15);
+}
+
+.browser-btn.opera .browser-icon { color: #FF1B2D; }
+.browser-btn.firefox .browser-icon { color: #FF7139; }
+.browser-btn.brave .browser-icon { color: #FB542B; }
+.browser-btn.chrome .browser-icon { color: #4285F4; }
+
+.browser-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+body.dark-theme .browser-name {
+  color: #FFFFFF;
+}
+
+.browser-desc {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
+.admin-modal-footer-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-direction: column;
+}
+
+.admin-action-btn {
+  background: transparent;
+  border: 1px dashed rgba(155, 126, 189, 0.4);
+  border-radius: 8px;
+  color: var(--color-primary);
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  font-family: var(--font-sans);
+}
+
+body.dark-theme .admin-action-btn {
+  color: var(--color-secondary-light);
+  border-color: rgba(217, 179, 108, 0.3);
+}
+
+.admin-action-btn:hover {
+  background: var(--color-primary);
+  color: white;
+  border-style: solid;
+}
+
+body.dark-theme .admin-action-btn:hover {
+  background: var(--color-secondary);
+  color: #1E1B24;
+}
   </style>
 </head>
 <body>
@@ -1286,9 +1457,9 @@ body.dark-theme .mision-title {
       <button id="heroInstallBtn" class="btn-top-install hidden" onclick="instalarPwa()">
         <i class="fas fa-download"></i> Instalar App
       </button>
-      <a class="btn-top-admin" href="https://script.google.com/macros/s/AKfycbxQTrPru770yAyCsNZewxUvHVJTSms4C2JN9r294AbE9Msjb8_V18gKi8W3JMHpsVJvXA/exec" target="_blank" title="Panel de Administración">
+      <button class="btn-top-admin" onclick="abrirAdminModal()" title="Panel de Administración">
         <i class="fas fa-lock"></i> Admin
-      </a>
+      </button>
     </div>
 
     <div class="header-overlay"></div>
@@ -1471,6 +1642,63 @@ body.dark-theme .mision-title {
         <p>Así como san Juan Diego abrió su tilma para ofrecer las flores de la Virgen y revelar su dulce imagen, queremos que cada objeto de nuestra tienda sea una <em>"flor"</em> que adorne tu hogar y acerque los corazones a la infinita belleza de Dios.</p>
       </div>
       <button class="btn btn-primary mision-btn" onclick="cerrarMisionModal()">¡Amén!</button>
+    </div>
+  <!-- Modal Selector de Navegadores para Admin -->
+  <div id="adminBrowserModal" class="admin-modal hidden" onclick="cerrarAdminModal(event)">
+    <div class="admin-modal-card" onclick="event.stopPropagation()">
+      <button class="close-modal" onclick="cerrarAdminModal()">&times;</button>
+      <div class="admin-modal-header">
+        <i class="fas fa-shield-halved admin-header-icon"></i>
+        <h3 class="admin-modal-title">Panel de Administración</h3>
+        <p class="admin-modal-subtitle">Elegí el navegador donde tenés iniciada la cuenta de la Regalería:</p>
+      </div>
+      
+      <div class="admin-browser-grid">
+        <!-- Opera -->
+        <button class="browser-btn opera" onclick="abrirEnNavegador('opera')">
+          <i class="fab fa-opera browser-icon"></i>
+          <div class="browser-info">
+            <span class="browser-name">Opera</span>
+            <small class="browser-desc">Cuenta Regalería</small>
+          </div>
+        </button>
+
+        <!-- Firefox -->
+        <button class="browser-btn firefox" onclick="abrirEnNavegador('firefox')">
+          <i class="fab fa-firefox-browser browser-icon"></i>
+          <div class="browser-info">
+            <span class="browser-name">Firefox</span>
+            <small class="browser-desc">Navegador secundario</small>
+          </div>
+        </button>
+
+        <!-- Brave -->
+        <button class="browser-btn brave" onclick="abrirEnNavegador('brave')">
+          <i class="fab fa-brave browser-icon"></i>
+          <div class="browser-info">
+            <span class="browser-name">Brave</span>
+            <small class="browser-desc">Navegación privada</small>
+          </div>
+        </button>
+
+        <!-- Predeterminado / Chrome -->
+        <button class="browser-btn chrome" onclick="abrirEnNavegador('default')">
+          <i class="fab fa-chrome browser-icon"></i>
+          <div class="browser-info">
+            <span class="browser-name">Predeterminado</span>
+            <small class="browser-desc">Navegador del sistema</small>
+          </div>
+        </button>
+      </div>
+
+      <div class="admin-modal-footer-actions">
+        <button class="admin-action-btn" onclick="abrirSelectorDelSistema()">
+          <i class="fas fa-mobile-screen-button"></i> Elegir entre todas las apps instaladas
+        </button>
+        <button class="admin-action-btn" onclick="copiarEnlaceAdmin()">
+          <i class="fas fa-copy"></i> Copiar Enlace Directo
+        </button>
+      </div>
     </div>
   </div>
 
@@ -2072,6 +2300,69 @@ body.dark-theme .mision-title {
       }
     }
 
+    // --------------------------------------------------------------------------
+    // MODAL SELECTOR DE NAVEGADORES PARA ADMIN
+    // --------------------------------------------------------------------------
+    const ADMIN_PANEL_URL = "https://script.google.com/macros/s/AKfycbxQTrPru770yAyCsNZewxUvHVJTSms4C2JN9r294AbE9Msjb8_V18gKi8W3JMHpsVJvXA/exec";
+
+    function abrirAdminModal() {
+      const m = document.getElementById('adminBrowserModal');
+      if (m) {
+        m.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function cerrarAdminModal(e) {
+      const m = document.getElementById('adminBrowserModal');
+      if (!e || e.target.id === 'adminBrowserModal' || (e.target.closest && e.target.closest('.close-modal'))) {
+        if (m) m.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function abrirEnNavegador(tipo) {
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const cleanUrl = ADMIN_PANEL_URL.replace(/^https?:\/\//, '');
+
+      if (isAndroid) {
+        let pkg = '';
+        if (tipo === 'opera') pkg = 'com.opera.browser';
+        else if (tipo === 'firefox') pkg = 'org.mozilla.firefox';
+        else if (tipo === 'brave') pkg = 'com.brave.browser';
+        
+        if (pkg) {
+          window.location.href = `intent://${cleanUrl}#Intent;scheme=https;package=${pkg};end`;
+          setTimeout(() => { cerrarAdminModal(); }, 600);
+          return;
+        }
+      }
+      
+      window.open(ADMIN_PANEL_URL, '_blank');
+      cerrarAdminModal();
+    }
+
+    function abrirSelectorDelSistema() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Panel de Administración San Juan Diego',
+          text: 'Acceso al panel de control de productos',
+          url: ADMIN_PANEL_URL
+        }).then(() => cerrarAdminModal()).catch(() => {});
+      } else {
+        abrirEnNavegador('default');
+      }
+    }
+
+    function copiarEnlaceAdmin() {
+      navigator.clipboard.writeText(ADMIN_PANEL_URL).then(() => {
+        mostrarToast("¡Enlace de Admin copiado al portapapeles!");
+        cerrarAdminModal();
+      }).catch(() => {
+        mostrarToast(ADMIN_PANEL_URL);
+      });
+    }
+
     function setupEventListeners() {
       let debounceTimer = null;
       elSearch.addEventListener('input', (e) => {
@@ -2093,6 +2384,7 @@ body.dark-theme .mision-title {
           zoomModal.classList.remove('show');
           cerrarInstallModal();
           cerrarMisionModal();
+          cerrarAdminModal();
         }
       });
     }
