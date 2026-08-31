@@ -1656,6 +1656,8 @@ body.dark-theme .mision-title {
 
     /**
      * Renderiza la sección de novedades con los últimos 3 productos
+     * Si la categoría es "Todos", toma de todo el catálogo.
+     * Si se selecciona una categoría específica, solo muestra los nuevos de esa categoría.
      */
     function renderNovedades() {
       const novedadesSection = document.getElementById('novedadesSection');
@@ -1666,7 +1668,17 @@ body.dark-theme .mision-title {
         return;
       }
       
-      let recientes = [...ALL_PRODUCTS];
+      let pool = ALL_PRODUCTS;
+      if (currentFilters.categoria && currentFilters.categoria !== "Todos") {
+        pool = pool.filter(p => p.categoria === currentFilters.categoria);
+      }
+      
+      if (pool.length === 0) {
+        novedadesSection.classList.add('hidden');
+        return;
+      }
+      
+      let recientes = [...pool];
       if (recientes.some(p => p.fecha)) {
         recientes.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
       } else {
@@ -1822,6 +1834,7 @@ body.dark-theme .mision-title {
       
       currentLimit = itemsPerPage;
       renderGrid();
+      try { renderNovedades(); } catch(e) { console.error('Error en renderNovedades:', e); }
     }
 
     // --------------------------------------------------------------------------
