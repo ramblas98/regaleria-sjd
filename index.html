@@ -1048,56 +1048,12 @@ body.dark-theme .product-price {
   color: var(--color-secondary);
 }
 
-/* Misión y Contacto */
-.mission-section {
-  background: linear-gradient(180deg, rgba(74, 53, 96, 0.15) 0%, rgba(30, 27, 36, 0.4) 100%);
-  padding: 5rem 1.5rem;
-  text-align: center;
-  border-top: 1px solid var(--border-card);
-  border-bottom: 1px solid var(--border-card);
-}
-
-.mission-container { max-width: 780px; margin: 0 auto; }
-.mission-section h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--color-primary); margin-bottom: 1.2rem; }
-body.dark-theme .mission-section h2 { color: var(--color-secondary-light); }
-.mission-section p { font-size: 1.05rem; line-height: 1.9; font-weight: 300; }
-
-.contact-section { padding: 5rem 1.5rem; text-align: center; max-width: 900px; margin: 0 auto; }
-.contact-grid { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; margin-top: 2rem; }
-.contact-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius);
-  padding: 1.6rem 2rem;
-  min-width: 150px;
-  flex: 1;
-  max-width: 190px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-.contact-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--color-secondary); }
-.contact-card .icon { font-size: 2.2rem; transition: transform 0.3s ease; }
-.contact-card:hover .icon { transform: scale(1.15); }
-.contact-card.whatsapp { border-top: 4px solid #25D366; }
-.contact-card.whatsapp .icon { color: #25D366; }
-.contact-card.facebook { border-top: 4px solid #1877F2; }
-.contact-card.facebook .icon { color: #1877F2; }
-.contact-card.instagram { border-top: 4px solid #E4405F; }
-.contact-card.instagram .icon { color: #E4405F; }
-.contact-card.youtube { border-top: 4px solid #FF0000; }
-.contact-card.youtube .icon { color: #FF0000; }
-
 footer {
   text-align: center;
-  padding: 2.5rem 1.5rem;
-  background: #141218;
-  color: #A09B96;
+  padding: 2rem;
+  background: var(--color-primary);
+  color: rgba(255,255,255,0.7);
   font-size: 0.9rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 /* Modal Guía Instalación PWA */
@@ -1327,43 +1283,6 @@ footer {
     <img id="zoomImg" src="" alt="Zoom Producto">
   </div>
 
-  <!-- Misión -->
-  <section class="mission-section">
-    <div class="mission-container">
-      <h2>Nuestra Misión</h2>
-      <p>En Regalería San Juan Diego creemos que la fe se vive en lo cotidiano, se comparte en comunidad y se regala como un puente de amor. Así como san Juan Diego abrió su tilma para ofrecer las flores de la Virgen y revelar su dulce imagen, queremos que cada objeto de nuestra tienda sea una "flor" que adorne tu hogar y acerque los corazones a la infinita belleza de Dios.</p>
-    </div>
-  </section>
-
-  <!-- Contacto -->
-  <section class="contact-section">
-    <h2 style="font-family:var(--font-title); font-size:2rem; color:var(--color-primary); margin-bottom:0.5rem;">Encontranos en</h2>
-    <div style="width:60px; height:3px; background:var(--color-secondary); margin:0.8rem auto 2.5rem; border-radius:2px;"></div>
-
-    <div class="contact-grid">
-      <a class="contact-card whatsapp" href="https://wa.me/543878230560?text=Hola%20Regaleria%2C%20me%20interesa%20consultarte%20por..." target="_blank">
-        <i class="fab fa-whatsapp icon"></i>
-        <span style="font-weight:600; margin-top:0.4rem;">WhatsApp</span>
-        <small style="color:var(--text-light);">3878 230560</small>
-      </a>
-      <a class="contact-card facebook" href="https://www.facebook.com/RegaleriaCatolicaSanJuanDiego" target="_blank">
-        <i class="fab fa-facebook icon"></i>
-        <span style="font-weight:600; margin-top:0.4rem;">Facebook</span>
-        <small style="color:var(--text-light);">@RegaleriaCatolicaSanJuanDiego</small>
-      </a>
-      <a class="contact-card instagram" href="https://www.instagram.com/regaleriacatolicasanjuandiego/" target="_blank">
-        <i class="fab fa-instagram icon"></i>
-        <span style="font-weight:600; margin-top:0.4rem;">Instagram</span>
-        <small style="color:var(--text-light);">@regaleriacatolicasanjuandiego</small>
-      </a>
-      <a class="contact-card youtube" href="https://www.youtube.com/@regaleriasanjuandiego" target="_blank">
-        <i class="fab fa-youtube icon"></i>
-        <span style="font-weight:600; margin-top:0.4rem;">YouTube</span>
-        <small style="color:var(--text-light);">@regaleriasanjuandiego</small>
-      </a>
-    </div>
-  </section>
-
   <!-- Modal Guía Instalación PWA -->
   <div id="installGuideModal" class="install-modal hidden" onclick="cerrarInstallModal(event)">
     <div class="install-modal-card" onclick="event.stopPropagation()">
@@ -1392,7 +1311,7 @@ footer {
 
   <!-- Footer -->
   <footer>
-    &copy; <span id="currentYear"></span> <strong>Regalería Católica San Juan Diego</strong> — Todos los derechos reservados.
+    <p>&copy; <span id="currentYear"></span> Regalería Católica San Juan Diego. Todos los derechos reservados.</p>
   </footer>
 
   <!-- ============================================================================
