@@ -1655,9 +1655,11 @@ body.dark-theme .mision-title {
     }
 
     /**
-     * Renderiza la sección de novedades con los últimos 3 productos
-     * Si la categoría es "Todos", toma de todo el catálogo.
-     * Si se selecciona una categoría específica, solo muestra los nuevos de esa categoría.
+     * Renderiza la sección de novedades:
+     * - Los artículos nuevos son los 3 últimos en general del catálogo.
+     * - Si la categoría es "Todos", se muestran los 3.
+     * - Si se selecciona una categoría específica, solo se muestran los que pertenezcan a esa categoría entre los 3 nuevos globales.
+     * - Si ninguno de los 3 nuevos pertenece a esa categoría, la sección se oculta por completo.
      */
     function renderNovedades() {
       const novedadesSection = document.getElementById('novedadesSection');
@@ -1668,25 +1670,23 @@ body.dark-theme .mision-title {
         return;
       }
       
-      let pool = ALL_PRODUCTS;
-      if (currentFilters.categoria && currentFilters.categoria !== "Todos") {
-        pool = pool.filter(p => p.categoria === currentFilters.categoria);
-      }
-      
-      if (pool.length === 0) {
-        novedadesSection.classList.add('hidden');
-        return;
-      }
-      
-      let recientes = [...pool];
+      // 1. Obtener los 3 últimos en general
+      let recientes = [...ALL_PRODUCTS];
       if (recientes.some(p => p.fecha)) {
         recientes.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
       } else {
         recientes.reverse();
       }
+      const top3Nuevos = recientes.slice(0, 3);
       
-      const novedades = recientes.slice(0, 3);
-      if (novedades.length === 0) {
+      // 2. Filtrar entre esos 3 nuevos los que coincidan con la categoría actual
+      let novedadesAMostrar = top3Nuevos;
+      if (currentFilters.categoria && currentFilters.categoria !== "Todos") {
+        novedadesAMostrar = top3Nuevos.filter(p => p.categoria === currentFilters.categoria);
+      }
+      
+      // 3. Si ninguno coincide, ocultar la sección
+      if (novedadesAMostrar.length === 0) {
         novedadesSection.classList.add('hidden');
         return;
       }
@@ -1695,7 +1695,7 @@ body.dark-theme .mision-title {
       const showPrices = CONFIG.MOSTRAR_PRECIOS === true;
       let html = '';
       
-      novedades.forEach(prod => {
+      novedadesAMostrar.forEach(prod => {
         const isAgotado = (prod.estado || '').toLowerCase().includes('agotado');
         const badgeHtml = isAgotado ? `<div class="badge agotado">Agotado</div>` : `<div class="badge nuevo">¡Nuevo!</div>`;
         const priceHtml = (showPrices && prod.precio) ? `<p class="product-price">$${prod.precio}</p>` : '';
