@@ -1,11 +1,13 @@
-const CACHE_NAME = 'sjd-landing-v3';
+const CACHE_NAME = 'sjd-landing-v4';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './assets/favicon.png',
   './assets/logo.png',
+  './assets/logo.jpg',
   './assets/og-image.png',
+  './assets/og-image.jpg',
   './assets/icon-192.png',
   './assets/icon-512.png',
   './assets/icon-maskable.png',
