@@ -1134,6 +1134,111 @@ footer {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
 }
+
+/* Enlace Footer Misión */
+.footer-separator {
+  margin: 0 0.5rem;
+  opacity: 0.6;
+}
+
+.footer-link-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-secondary-light, #F2DAB3);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: var(--transition);
+  padding: 0;
+}
+
+.footer-link-btn:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(242, 218, 179, 0.6);
+}
+
+/* Modal Misión */
+.mision-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 36, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3500;
+  padding: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+
+.mision-modal.hidden {
+  display: none !important;
+}
+
+.mision-modal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius);
+  max-width: 520px;
+  width: 100%;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: fadeUp 0.3s ease both;
+}
+
+.mision-logo {
+  width: 140px;
+  height: auto;
+  margin-bottom: 0.8rem;
+  filter: drop-shadow(0 4px 10px rgba(155, 126, 189, 0.3));
+}
+
+.mision-title {
+  font-family: var(--font-title);
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+body.dark-theme .mision-title {
+  color: var(--color-secondary-light);
+}
+
+.mision-divider {
+  width: 50px;
+  height: 3px;
+  background: var(--color-secondary);
+  margin: 0.5rem auto 1.4rem;
+  border-radius: 2px;
+}
+
+.mision-body {
+  text-align: center;
+  color: var(--text-dark);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mision-body p {
+  margin: 0;
+}
+
+.mision-btn {
+  margin-top: 1.8rem;
+  width: 100%;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
   </style>
 </head>
 <body>
@@ -1306,12 +1411,33 @@ footer {
     </div>
   </div>
 
+  <!-- Modal Nuestra Misión -->
+  <div id="misionModal" class="mision-modal hidden" onclick="cerrarMisionModal(event)">
+    <div class="mision-modal-card" onclick="event.stopPropagation()">
+      <button class="close-modal" onclick="cerrarMisionModal()">&times;</button>
+      <div class="mision-modal-header">
+        <img src="./assets/logo.png" alt="Logo Regalería San Juan Diego" class="mision-logo">
+        <h3 class="mision-title">Nuestra Misión</h3>
+        <div class="mision-divider"></div>
+      </div>
+      <div class="mision-body">
+        <p>En <strong>Regalería San Juan Diego</strong> creemos que la fe se vive en lo cotidiano, se comparte en comunidad y se regala como un puente de amor.</p>
+        <p>Así como san Juan Diego abrió su tilma para ofrecer las flores de la Virgen y revelar su dulce imagen, queremos que cada objeto de nuestra tienda sea una <em>"flor"</em> que adorne tu hogar y acerque los corazones a la infinita belleza de Dios.</p>
+      </div>
+      <button class="btn btn-primary mision-btn" onclick="cerrarMisionModal()">¡Amén!</button>
+    </div>
+  </div>
+
   <!-- Toast -->
   <div id="toastNotification" class="toast">¡Enlace copiado al portapapeles!</div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; <span id="currentYear"></span> Regalería Católica San Juan Diego. Todos los derechos reservados.</p>
+    <p>
+      &copy; <span id="currentYear"></span> Regalería Católica San Juan Diego. Todos los derechos reservados.
+      <span class="footer-separator">·</span>
+      <button class="footer-link-btn" onclick="abrirMisionModal()">Nuestra Misión</button>
+    </p>
   </footer>
 
   <!-- ============================================================================
@@ -1868,6 +1994,25 @@ footer {
       if (modal.classList.contains('show')) closeModal();
     });
 
+    // --------------------------------------------------------------------------
+    // MODAL NUESTRA MISIÓN
+    // --------------------------------------------------------------------------
+    function abrirMisionModal() {
+      const m = document.getElementById('misionModal');
+      if (m) {
+        m.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function cerrarMisionModal(e) {
+      const m = document.getElementById('misionModal');
+      if (!e || e.target.id === 'misionModal' || (e.target.closest && e.target.closest('.close-modal')) || (e.target.classList && e.target.classList.contains('mision-btn'))) {
+        if (m) m.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
     function setupEventListeners() {
       let debounceTimer = null;
       elSearch.addEventListener('input', (e) => {
@@ -1888,6 +2033,7 @@ footer {
           closeModal();
           zoomModal.classList.remove('show');
           cerrarInstallModal();
+          cerrarMisionModal();
         }
       });
     }
