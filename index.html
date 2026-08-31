@@ -4,8 +4,8 @@
   <base target="_top">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Regalería San Juan Diego</title>
-  <meta name="description" content="Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica. Vive, comparte, regala.">
+  <title>Regalería San Juan Diego | Catálogo & Tienda Oficial</title>
+  <meta name="description" content="Catálogo online de Regalería San Juan Diego. Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica. Vive, comparte, regala.">
 
   <!-- Favicon (Icono de pestaña) -->
   <link rel="icon" type="image/png" href="./assets/favicon.png">
@@ -22,7 +22,7 @@
 
   <!-- Open Graph / Vistas Previas (WhatsApp, Facebook, Twitter, etc.) -->
   <meta property="og:site_name" content="Regalería San Juan Diego">
-  <meta property="og:title" content="Regalería San Juan Diego">
+  <meta property="og:title" content="Regalería San Juan Diego | Catálogo Online">
   <meta property="og:description" content="Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica. Vive, comparte, regala.">
   <meta property="og:image" content="https://ramblas98.github.io/regaleria-sjd/assets/og-image.png">
   <meta property="og:image:secure_url" content="https://ramblas98.github.io/regaleria-sjd/assets/og-image.png">
@@ -34,7 +34,7 @@
   <meta property="og:type" content="website">
 
   <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Regalería San Juan Diego">
   <meta name="twitter:description" content="Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica. Vive, comparte, regala.">
   <meta name="twitter:image" content="https://ramblas98.github.io/regaleria-sjd/assets/og-image.png">
@@ -42,51 +42,86 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* ==========================================================================
+       VARIABLES Y SISTEMA DE DISEÑO
+       ========================================================================== */
     :root {
       --color-primary: #9B7EBD;
       --color-primary-dark: #6E5394;
       --color-primary-darker: #4A3560;
       --color-secondary: #D9B36C;
       --color-secondary-light: #F2DAB3;
-      --color-earth: #8C7861;
+      --color-earth: #C19A5B;
+      --color-accent: #25D366;
       
       --bg-main: #1E1B24;
       --bg-card: #2D2836;
+      --bg-card-hover: #363041;
+      --bg-input: #25212D;
       --text-dark: #FDFBF7;
-      --text-light: #A09B96;
+      --text-light: #B8B2AA;
+      --border-color: rgba(217, 179, 108, 0.25);
+      --border-focus: rgba(217, 179, 108, 0.7);
       
-      --header-g1: rgba(74, 53, 96, 0.4);
-      --header-g2: rgba(30, 27, 36, 0.95);
+      --header-gradient: linear-gradient(160deg, #4A3560 0%, #6E5394 40%, #C19A5B 100%);
+      --header-overlay: linear-gradient(180deg, rgba(74,53,96,0.2) 0%, rgba(30,27,36,0.92) 100%);
       
       --font-title: 'Playfair Display', serif;
-      --font-serif: 'Playfair Display', serif;
       --font-sans: 'Montserrat', sans-serif;
       
-      --shadow: 0 8px 32px rgba(0,0,0,0.5);
-      --radius: 12px;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.25);
+      --shadow: 0 8px 32px rgba(0,0,0,0.35);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.5);
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 24px;
+      --radius-pill: 50px;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
+    /* ── TEMA CLARO (LIGHT THEME) ── */
+    body.light-theme {
+      --bg-main: #FBF9F5;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #F8F5EE;
+      --bg-input: #F3EFE6;
+      --text-dark: #3A3238;
+      --text-light: #7A7270;
+      --border-color: rgba(155, 126, 189, 0.2);
+      --border-focus: rgba(110, 83, 148, 0.6);
+      --shadow-sm: 0 4px 12px rgba(74, 53, 96, 0.08);
+      --shadow: 0 8px 24px rgba(74, 53, 96, 0.12);
+      --shadow-lg: 0 16px 40px rgba(74, 53, 96, 0.18);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-sans);
       background: var(--bg-main);
       color: var(--text-dark);
-      line-height: 1.7;
+      line-height: 1.65;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
-    /* ── HERO ── */
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+
+    /* ==========================================================================
+       HERO / CABECERA
+       ========================================================================== */
     .hero {
       position: relative;
-      min-height: 100vh;
-      background: linear-gradient(160deg, #4A3560 0%, #6E5394 40%, #C19A5B 100%);
+      min-height: 90vh;
+      background: var(--header-gradient);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -94,276 +129,152 @@
       text-align: center;
       color: white;
       overflow: hidden;
+      padding: 3rem 1.5rem 4rem;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(74,53,96,0.15) 0%, rgba(30,27,36,0.4) 100%);
+      background: var(--header-overlay);
+      z-index: 1;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 2rem 1.5rem;
-      max-width: 750px;
-      animation: fadeUp 0.9s ease both;
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeUp 0.8s ease both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     .header-logo {
-      width: 340px;
+      width: clamp(220px, 45vw, 320px);
       height: auto;
-      margin-bottom: 1.5rem;
-      filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(217, 179, 108, 0.6));
-      opacity: 0.97;
+      margin-bottom: 0.8rem;
+      filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.4));
+      border-radius: 50%;
+      background: #FFFFFF;
+      padding: 6px;
+      box-shadow: 0 0 30px rgba(217, 179, 108, 0.4);
     }
 
-    .brand-name {
+    .brand-title {
       font-family: var(--font-title);
-      font-size: clamp(1.8rem, 5vw, 3.5rem);
-      letter-spacing: 2px;
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 1.5px;
       color: var(--color-secondary-light);
-      text-shadow: 2px 4px 12px rgba(0,0,0,0.4);
-      margin-bottom: 0.4rem;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+      margin-bottom: 0.3rem;
     }
 
-    .brand-tagline {
-      font-family: var(--font-serif);
+    .brand-subtitle {
+      font-size: 1.05rem;
       font-style: italic;
-      font-size: clamp(1rem, 3vw, 1.4rem);
-      opacity: 0.92;
-      letter-spacing: 1px;
-      margin-bottom: 1.2rem;
-    }
-
-    .brand-desc {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      opacity: 0.85;
-      max-width: 500px;
-      margin: 0 auto 2.5rem;
       font-weight: 300;
+      letter-spacing: 3.5px;
+      text-transform: lowercase;
+      color: rgba(242, 218, 179, 0.9);
+      margin-bottom: 2rem;
     }
 
-    /* ── BOTONES HERO ── */
     .hero-btns {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.8rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.6rem;
-      padding: 0.9rem 2rem;
-      border-radius: 50px;
-      font-family: var(--font-sans);
+      padding: 0.85rem 1.8rem;
+      border-radius: var(--radius-pill);
       font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: var(--transition);
+      font-size: 0.95rem;
       letter-spacing: 0.5px;
+      transition: var(--transition);
+      text-decoration: none;
+      box-shadow: var(--shadow);
     }
 
     .btn-primary {
-      background: var(--color-secondary);
-      color: #1a202c;
-      box-shadow: 0 4px 16px rgba(217, 179, 108, 0.4);
+      background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+      color: #3A284C;
+      border: 1px solid rgba(255,255,255,0.4);
     }
 
     .btn-primary:hover {
-      background: var(--color-secondary-light);
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 8px 24px rgba(217, 179, 108, 0.5);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(217, 179, 108, 0.45);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.15);
-      color: white;
-      border: 2px solid rgba(255,255,255,0.7);
-      backdrop-filter: blur(4px);
+      background: rgba(30, 27, 36, 0.5);
+      backdrop-filter: blur(8px);
+      color: var(--color-secondary-light);
+      border: 1px solid rgba(217, 179, 108, 0.4);
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.28);
+      background: rgba(74, 53, 96, 0.7);
+      border-color: var(--color-secondary);
       transform: translateY(-3px);
     }
 
     .btn-install {
-      background: linear-gradient(135deg, #D9B36C 0%, #F2DAB3 100%);
-      color: #1E1B24;
-      box-shadow: 0 4px 16px rgba(217, 179, 108, 0.4);
-      animation: pulseBtn 2.5s infinite ease-in-out;
-    }
-
-    @keyframes pulseBtn {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); box-shadow: 0 6px 20px rgba(217, 179, 108, 0.6); }
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .btn-install:hover {
-      background: #FFF;
-      transform: translateY(-3px) scale(1.05);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
     }
+
+    .hidden { display: none !important; }
 
     .social-row {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-
-    .social-row a {
-      color: white;
-      font-size: 1.4rem;
-      opacity: 0.85;
-      transition: var(--transition);
-    }
-
-    .social-row a:hover {
-      opacity: 1;
-      transform: translateY(-3px) scale(1.15);
-      color: var(--color-secondary-light);
-    }
-
-    /* ── MISIÓN ── */
-    .mission-section {
-      background: var(--bg-main);
-      padding: 5rem 1.5rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(155, 126, 189, 0.15);
-    }
-
-    .mission-container {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .mission-section h2 {
-      font-family: var(--font-title);
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      color: var(--color-secondary-light);
-      margin-bottom: 1.5rem;
-    }
-
-    .mission-section p {
-      font-size: 1.05rem;
-      color: var(--text-dark);
-      line-height: 1.9;
-      font-family: var(--font-sans);
-      font-weight: 300;
-      opacity: 0.95;
-    }
-
-    /* ── CONTACTO ── */
-    .contact-section {
-      background: var(--bg-card);
-      padding: 5rem 1.5rem;
-      text-align: center;
-      box-shadow: inset 0 4px 20px rgba(44,82,130,0.06);
-    }
-
-    .section-title {
-      font-family: var(--font-title);
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      color: var(--color-secondary-light);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-divider {
-      width: 60px;
-      height: 3px;
-      background: var(--color-secondary);
-      margin: 0.8rem auto 2.5rem;
-      border-radius: 2px;
-    }
-
-    .contact-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .contact-card {
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 1.8rem 2.2rem;
-      min-width: 140px;
-      flex: 1;
-      max-width: 180px;
-      text-decoration: none;
-      color: var(--text-dark);
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      border: 1px solid rgba(155,126,189,0.15);
-      overflow: hidden;
+      justify-content: center;
+      gap: 1.3rem;
+      margin-top: 0.5rem;
     }
 
-    .contact-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(155, 126, 189, 0.15);
-      border-color: rgba(155, 126, 189, 0.4);
+    .social-row a, .theme-toggle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-secondary-light);
+      font-size: 1.25rem;
+      transition: var(--transition);
+      border: 1px solid rgba(217, 179, 108, 0.25);
     }
 
-    .contact-card .icon {
-      font-size: 2.4rem;
-      transition: transform 0.3s ease;
+    .social-row a:hover, .theme-toggle-btn:hover {
+      background: var(--color-secondary);
+      color: #3A284C;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(217, 179, 108, 0.4);
     }
-
-    /* Texto oculto por defecto, se revela en hover/active */
-    .contact-card .label,
-    .contact-card small {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      font-size: 0.9rem;
-      transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.3s ease;
-      margin: 0;
-    }
-
-    .contact-card:hover .label,
-    .contact-card:active .label {
-      max-height: 2rem;
-      opacity: 1;
-      margin-top: 0.4rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .contact-card:hover small,
-    .contact-card:active small {
-      max-height: 2rem;
-      opacity: 0.75;
-      margin-bottom: 0.2rem;
-    }
-
-    .contact-card:hover .icon {
-      transform: scale(1.15);
-    }
-
-    .contact-card.whatsapp { border-top: 4px solid #25D366; }
-    .contact-card.whatsapp .icon { color: #25D366; }
-    .contact-card.facebook { border-top: 4px solid #1877F2; }
-    .contact-card.facebook .icon { color: #1877F2; }
-    .contact-card.instagram { border-top: 4px solid #E4405F; }
-    .contact-card.instagram .icon { color: #E4405F; }
-    .contact-card.youtube { border-top: 4px solid #FF0000; }
-    .contact-card.youtube .icon { color: #FF0000; }
 
     .virtual-store-notice {
       display: inline-flex;
@@ -374,7 +285,7 @@
       padding: 0.6rem 1.4rem;
       background: rgba(30, 27, 36, 0.45);
       border: 1px solid rgba(217, 179, 108, 0.35);
-      border-radius: 50px;
+      border-radius: var(--radius-pill);
       color: var(--color-secondary-light);
       font-size: 0.88rem;
       font-weight: 400;
@@ -388,160 +299,831 @@
       font-size: 0.95rem;
     }
 
-    /* ── MODAL GUÍA DE INSTALACIÓN MULTI-NAVEGADOR ── */
+    /* ==========================================================================
+       SECCIÓN CATÁLOGO & CONTROLES
+       ========================================================================== */
+    .catalogo-section {
+      padding: 4rem 1.5rem 5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--color-secondary-light);
+      margin-bottom: 0.4rem;
+    }
+
+    body.light-theme .section-title {
+      color: var(--color-primary-darker);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    .section-divider {
+      width: 70px;
+      height: 3px;
+      background: var(--color-secondary);
+      margin: 0.8rem auto 1.5rem;
+      border-radius: 2px;
+    }
+
+    /* Controles de Búsqueda y Filtros */
+    .controls-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      align-items: center;
+    }
+
+    .search-box {
+      width: 100%;
+      max-width: 620px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-pill);
+      padding: 0.9rem 3rem 0.9rem 3.2rem;
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      outline: none;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .search-box input:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 16px rgba(217, 179, 108, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.2rem;
+      color: var(--color-secondary);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 1.2rem;
+      background: transparent;
+      color: var(--text-light);
+      font-size: 1rem;
+      display: none;
+    }
+
+    .clear-search-btn.visible { display: block; }
+    .clear-search-btn:hover { color: var(--color-secondary); }
+
+    /* Categorías Pills */
+    .categories-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      max-width: 900px;
+    }
+
+    .cat-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cat-pill .count {
+      font-size: 0.75rem;
+      opacity: 0.65;
+      background: rgba(255,255,255,0.08);
+      padding: 0.1rem 0.45rem;
+      border-radius: 10px;
+    }
+
+    .cat-pill:hover, .cat-pill.active {
+      background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+      color: #FFFFFF;
+      border-color: var(--color-secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(155, 126, 189, 0.35);
+    }
+
+    .cat-pill.active .count {
+      background: rgba(0,0,0,0.25);
+      opacity: 1;
+    }
+
+    /* Filtros Avanzados (Desplegables) */
+    .advanced-filters-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .filter-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      outline: none;
+      transition: var(--transition);
+      cursor: pointer;
+      min-width: 170px;
+    }
+
+    .filter-select:focus {
+      border-color: var(--border-focus);
+    }
+
+    .filter-select option {
+      background: var(--bg-card);
+      color: var(--text-dark);
+    }
+
+    /* ==========================================================================
+       CUADRÍCULA DE PRODUCTOS
+       ========================================================================== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-img-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* 1:1 Aspect Ratio */
+      background: #18151D;
+      overflow: hidden;
+    }
+
+    body.light-theme .product-img-wrapper {
+      background: #F0EAE1;
+    }
+
+    .product-img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.06);
+    }
+
+    .badge-category {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: rgba(30, 27, 36, 0.75);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(217, 179, 108, 0.4);
+      color: var(--color-secondary-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+
+    .badge-devocion {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: rgba(74, 53, 96, 0.85);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      z-index: 2;
+    }
+
+    .badge-status {
+      position: absolute;
+      bottom: 12px; right: 12px;
+      background: rgba(220, 53, 69, 0.9);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      z-index: 2;
+    }
+
+    .product-info {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-secondary-light);
+      margin-bottom: 0.4rem;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    body.light-theme .product-title {
+      color: var(--color-primary-darker);
+    }
+
+    .product-meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .product-price-row {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+    }
+
+    .btn-card-wa {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-card-wa:hover {
+      transform: scale(1.15);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+    }
+
+    /* Skeleton Loader */
+    .skeleton-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      animation: pulseSkeleton 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseSkeleton {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.9; }
+    }
+
+    .skeleton-img { width: 100%; padding-top: 100%; background: rgba(255,255,255,0.05); }
+    .skeleton-text { height: 16px; margin: 1rem; background: rgba(255,255,255,0.08); border-radius: 4px; }
+    .skeleton-text.short { width: 50%; }
+
+    /* Paginación */
+    .pagination-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .page-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      min-width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .page-btn:hover, .page-btn.active {
+      background: var(--color-primary-dark);
+      color: #FFFFFF;
+      border-color: var(--color-secondary);
+    }
+
+    .page-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Sin Resultados */
+    .no-results {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-light);
+    }
+
+    .no-results i {
+      font-size: 3rem;
+      color: var(--color-secondary);
+      margin-bottom: 1rem;
+    }
+
+    /* ==========================================================================
+       MODAL DE PRODUCTO (DETALLES & CARRUSEL)
+       ========================================================================== */
+    .product-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 1rem;
+      animation: fadeInModal 0.25s ease;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-focus);
+      border-radius: var(--radius);
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2.2rem;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 768px) {
+      .modal-card {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1.2rem;
+      }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: rgba(255,255,255,0.1);
+      color: var(--text-dark);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      z-index: 10;
+    }
+
+    .modal-close-btn:hover {
+      background: #dc3545;
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    .modal-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .modal-main-img-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      background: #18151D;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .modal-main-img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .modal-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .modal-nav-arrow.prev { left: 8px; }
+    .modal-nav-arrow.next { right: 8px; }
+    .modal-nav-arrow:hover { background: var(--color-primary-dark); }
+
+    .modal-thumbs-strip {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .modal-thumb {
+      width: 60px; height: 60px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .modal-thumb.active, .modal-thumb:hover {
+      border-color: var(--color-secondary);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .modal-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .modal-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .modal-tag {
+      background: rgba(217, 179, 108, 0.15);
+      border: 1px solid rgba(217, 179, 108, 0.35);
+      color: var(--color-secondary-light);
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .modal-title {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-secondary-light);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    body.light-theme .modal-title {
+      color: var(--color-primary-darker);
+    }
+
+    .modal-sku {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .modal-desc {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .modal-price-box {
+      background: rgba(217, 179, 108, 0.1);
+      border: 1px solid rgba(217, 179, 108, 0.3);
+      padding: 1rem 1.4rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-price-label { font-size: 0.85rem; color: var(--text-light); }
+    .modal-price-val { font-size: 1.6rem; font-weight: 700; color: var(--color-secondary); }
+
+    .modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .btn-wa-order {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white;
+      padding: 0.9rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+      transition: var(--transition);
+    }
+
+    .btn-wa-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+    }
+
+    .btn-share-modal {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      padding: 0.75rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .btn-share-modal:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: var(--color-secondary);
+    }
+
+    /* Toast Notificación */
+    .toast {
+      position: fixed;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #3A284C;
+      color: #F2DAB3;
+      border: 1px solid var(--color-secondary);
+      padding: 0.8rem 1.6rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 3000;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       SECCIONES MISIÓN, CONTACTO & FOOTER
+       ========================================================================== */
+    .mission-section {
+      background: linear-gradient(180deg, rgba(74, 53, 96, 0.25) 0%, rgba(30, 27, 36, 0.6) 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .mission-container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .mission-section h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: var(--color-secondary-light);
+      margin-bottom: 1.2rem;
+    }
+
+    body.light-theme .mission-section h2 {
+      color: var(--color-primary-darker);
+    }
+
+    .mission-section p {
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      line-height: 1.9;
+      font-weight: 300;
+      opacity: 0.95;
+    }
+
+    .contact-section {
+      padding: 5rem 1.5rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      min-width: 150px;
+      flex: 1;
+      max-width: 190px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-focus);
+    }
+
+    .contact-card .icon { font-size: 2.2rem; transition: transform 0.3s ease; }
+    .contact-card:hover .icon { transform: scale(1.15); }
+    .contact-card.whatsapp { border-top: 4px solid #25D366; }
+    .contact-card.whatsapp .icon { color: #25D366; }
+    .contact-card.facebook { border-top: 4px solid #1877F2; }
+    .contact-card.facebook .icon { color: #1877F2; }
+    .contact-card.instagram { border-top: 4px solid #E4405F; }
+    .contact-card.instagram .icon { color: #E4405F; }
+    .contact-card.youtube { border-top: 4px solid #FF0000; }
+    .contact-card.youtube .icon { color: #FF0000; }
+
+    footer {
+      background: #141218;
+      color: var(--text-light);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 0.88rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Modal Guía Instalación PWA */
     .install-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.78);
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
+      z-index: 3000;
       padding: 1rem;
-      animation: fadeInModal 0.3s ease;
-    }
-
-    .install-modal.hidden {
-      display: none !important;
-    }
-
-    @keyframes fadeInModal {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
 
     .install-modal-card {
       background: var(--bg-card);
-      border: 1px solid rgba(217, 179, 108, 0.4);
+      border: 1px solid var(--border-focus);
       border-radius: var(--radius);
       padding: 2.2rem 1.8rem 1.8rem;
-      max-width: 420px;
+      max-width: 440px;
       width: 100%;
       text-align: center;
       position: relative;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-      animation: scaleUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes scaleUpModal {
-      from { transform: scale(0.92); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .install-close {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      background: transparent;
-      border: none;
-      color: var(--text-light);
-      font-size: 1.7rem;
-      cursor: pointer;
-      padding: 4px 8px;
-      line-height: 1;
-      border-radius: 50%;
-      transition: var(--transition);
-    }
-
-    .install-close:hover {
-      color: white;
-      background: rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow-lg);
     }
 
     .install-modal-icon {
-      width: 68px;
-      height: 68px;
-      border-radius: 16px;
-      margin-bottom: 1rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(217, 179, 108, 0.3);
-    }
-
-    .install-modal-card h3 {
-      font-family: var(--font-title);
-      color: var(--color-secondary-light);
-      font-size: 1.35rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .install-modal-subtitle {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      margin-bottom: 1.3rem;
-      line-height: 1.4;
+      width: 76px; height: 76px;
+      border-radius: 18px;
+      background: #FFFFFF;
+      padding: 6px;
+      margin: 0 auto 1rem;
+      box-shadow: 0 4px 16px rgba(217, 179, 108, 0.3);
     }
 
     .install-steps-list {
       text-align: left;
+      margin: 1.4rem 0;
       display: flex;
       flex-direction: column;
       gap: 0.9rem;
-      background: rgba(30, 27, 36, 0.65);
-      padding: 1.2rem;
-      border-radius: 10px;
-      border: 1px solid rgba(155, 126, 189, 0.25);
     }
 
     .install-step-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      font-size: 0.88rem;
-      color: var(--text-dark);
-      line-height: 1.45;
-    }
-
-    .install-step-item strong {
-      color: var(--color-secondary-light);
+      gap: 0.8rem;
+      font-size: 0.92rem;
     }
 
     .install-step-num {
-      color: var(--color-secondary);
-      font-size: 1.15rem;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--color-primary-dark);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
       flex-shrink: 0;
-      margin-top: 1px;
-      width: 24px;
-      text-align: center;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--bg-main);
-      color: rgba(255,255,255,0.7);
-      border-top: 1px solid rgba(217, 179, 108, 0.15);
-      text-align: center;
-      padding: 1.8rem;
-      font-size: 0.88rem;
-      font-family: var(--font-serif);
-      font-style: italic;
-    }
-
-    footer span {
-      color: var(--color-secondary-light);
     }
   </style>
 </head>
 <body>
 
-  <!-- ── HERO ── -->
-  <section class="hero">
+  <!-- ── HERO / CABECERA ── -->
+  <header class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <img src="./assets/logo.png" alt="Logo San Juan Diego" class="header-logo">
-
-      <h1 class="brand-name">Regalería San Juan Diego</h1>
-      <p class="brand-tagline">Vive, comparte, regala.</p>
-      <p class="brand-desc">Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica.</p>
+      <img src="./assets/logo.png" alt="Logo Regalería San Juan Diego" class="header-logo">
+      <h1 class="brand-title">Regalería San Juan Diego</h1>
+      <p class="brand-subtitle">vive, comparte y regala</p>
 
       <div class="hero-btns">
-        <a class="btn btn-primary"
-           href="https://script.google.com/macros/s/AKfycbyakJY1f84w-L5PQ14bosSssX91T_aXhKCeumGei_Bn5uH784s8ZSmIzIRPcArXlcjU/exec"
-           target="_blank">
+        <a class="btn btn-primary" href="#catalogo" onclick="scrollToCatalogo(event)">
           <i class="fas fa-book-open"></i> Ver Catálogo
         </a>
         <a class="btn btn-secondary" href="https://script.google.com/macros/s/AKfycbxQTrPru770yAyCsNZewxUvHVJTSms4C2JN9r294AbE9Msjb8_V18gKi8W3JMHpsVJvXA/exec" target="_blank">
@@ -553,6 +1135,9 @@
       </div>
 
       <div class="social-row">
+        <button id="themeToggle" class="theme-toggle-btn" title="Cambiar Tema">
+          <i class="fas fa-moon"></i>
+        </button>
         <a href="https://wa.me/543878230560?text=Hola%20Regaleria%2C%20me%20interesa%20consultarte%20por..." target="_blank" title="WhatsApp">
           <i class="fab fa-whatsapp"></i>
         </a>
@@ -572,7 +1157,69 @@
         <span>Negocio virtual, por el momento sin local físico</span>
       </div>
     </div>
-  </section>
+  </header>
+
+  <!-- ── SECCIÓN CATÁLOGO INTERACTIVO ── -->
+  <main id="catalogo" class="catalogo-section">
+    <div class="section-header">
+      <h2 class="section-title">Nuestro Catálogo</h2>
+      <p class="section-subtitle">Explorá nuestros artículos religiosos, devociones y regalos especiales</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Controles (Buscador y Filtros) -->
+    <div class="controls-wrapper">
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Buscar por nombre, devoción, sacramento (ej. Rosario, Guadalupe, Bautismo)..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-search-btn" title="Limpiar búsqueda">&times;</button>
+      </div>
+
+      <!-- Barra de Categorías -->
+      <div class="categories-bar" id="categoriesContainer">
+        <button class="cat-pill active" data-cat="Todos">Todos</button>
+      </div>
+
+      <!-- Filtros Avanzados -->
+      <div class="advanced-filters-row">
+        <select id="filterDevocion" class="filter-select">
+          <option value="">Todas las Devociones</option>
+        </select>
+        <select id="filterSacramento" class="filter-select">
+          <option value="">Todos los Sacramentos</option>
+        </select>
+        <select id="filterEvento" class="filter-select">
+          <option value="">Todos los Eventos</option>
+        </select>
+        <select id="filterItemsPerPage" class="filter-select" style="min-width: 110px;">
+          <option value="12">12 por pág.</option>
+          <option value="24" selected>24 por pág.</option>
+          <option value="48">48 por pág.</option>
+          <option value="all">Ver Todos</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Cuadrícula de Productos -->
+    <div id="productsGrid" class="products-grid">
+      <!-- Skeletons mostrados mientras carga la API -->
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+    </div>
+
+    <!-- Estado Sin Resultados -->
+    <div id="noResults" class="no-results hidden">
+      <i class="fas fa-search-minus"></i>
+      <h3>No encontramos productos para esa búsqueda</h3>
+      <p>Probá ajustando los filtros o utilizando términos más generales.</p>
+      <button class="btn btn-secondary" style="margin-top: 1rem;" onclick="resetAllFilters()">Limpiar Filtros</button>
+    </div>
+
+    <!-- Paginación -->
+    <div id="paginationBar" class="pagination-bar hidden"></div>
+  </main>
 
   <!-- ── MISIÓN ── -->
   <section class="mission-section">
@@ -611,55 +1258,676 @@
     </div>
   </section>
 
+  <!-- ── MODAL DE DETALLE DE PRODUCTO ── -->
+  <div id="productModal" class="product-modal hidden" onclick="cerrarModalClickFuera(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="cerrarProductModal()">&times;</button>
+      
+      <!-- Galería de Fotos -->
+      <div class="modal-gallery">
+        <div class="modal-main-img-wrap">
+          <img id="modalMainImg" src="" alt="Producto" class="modal-main-img">
+          <button id="modalPrevBtn" class="modal-nav-arrow prev hidden" onclick="cambiarFotoModal(-1)"><i class="fas fa-chevron-left"></i></button>
+          <button id="modalNextBtn" class="modal-nav-arrow next hidden" onclick="cambiarFotoModal(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div id="modalThumbs" class="modal-thumbs-strip"></div>
+      </div>
+
+      <!-- Información del Producto -->
+      <div class="modal-details">
+        <div id="modalBadges" class="modal-badge-row"></div>
+        <h3 id="modalTitle" class="modal-title"></h3>
+        <p id="modalSku" class="modal-sku"></p>
+        <p id="modalDesc" class="modal-desc"></p>
+        
+        <div class="modal-price-box">
+          <span class="modal-price-label">Precio Unitario:</span>
+          <span id="modalPrice" class="modal-price-val"></span>
+        </div>
+
+        <div class="modal-actions">
+          <a id="modalWaBtn" class="btn-wa-order" href="#" target="_blank">
+            <i class="fab fa-whatsapp"></i> Consultar / Pedir por WhatsApp
+          </a>
+          <button class="btn-share-modal" onclick="compartirProductoActual()">
+            <i class="fas fa-share-alt"></i> Compartir Producto
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── MODAL GUÍA DE INSTALACIÓN MULTI-NAVEGADOR ── -->
   <div id="installGuideModal" class="install-modal hidden" onclick="cerrarInstallModal(event)">
     <div class="install-modal-card" onclick="event.stopPropagation()">
-      <button class="install-close" onclick="cerrarInstallModal()">&times;</button>
+      <button class="modal-close-btn" onclick="cerrarInstallModal()">&times;</button>
       <img src="./assets/icon-192.png" alt="SJD" class="install-modal-icon">
-      <h3 id="modalTitle">Instalar en tu Dispositivo</h3>
-      <p id="modalSubtitle" class="install-modal-subtitle">Agregá la App a tu pantalla de inicio en 2 simples pasos:</p>
+      <h3 id="installGuideTitle">Instalar en tu Dispositivo</h3>
+      <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.3rem;">Agregá la App a tu pantalla de inicio en 2 simples pasos:</p>
       
-      <div id="modalSteps" class="install-steps-list">
-        <!-- Pasos inyectados dinámicamente según el navegador -->
-      </div>
+      <div id="modalSteps" class="install-steps-list"></div>
 
       <button class="btn btn-primary" style="margin-top:1.5rem;width:100%;justify-content:center;" onclick="cerrarInstallModal()">¡Entendido!</button>
     </div>
   </div>
 
+  <!-- ── TOAST NOTIFICACIÓN ── -->
+  <div id="toastNotification" class="toast">¡Enlace copiado al portapapeles!</div>
+
   <!-- ── FOOTER ── -->
   <footer>
-    &copy; <span id="currentYear"></span> <span>Regalería Católica San Juan Diego</span> — Todos los derechos reservados.
+    &copy; <span id="currentYear"></span> <strong>Regalería Católica San Juan Diego</strong> — Todos los derechos reservados.
   </footer>
 
-  <!-- ── LOGICA PWA & SCRIPTS ── -->
+  <!-- ==========================================================================
+       LÓGICA SPA, SERVICE WORKER Y MOTOR DE CATÁLOGO
+       ========================================================================== -->
   <script>
-    // Año automático
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    // --------------------------------------------------------------------------
+    // CONFIGURACIÓN Y ESTADO GLOBAL
+    // --------------------------------------------------------------------------
+    const API_ENDPOINT = "https://script.google.com/macros/s/AKfycbyakJY1f84w-L5PQ14bosSssX91T_aXhKCeumGei_Bn5uH784s8ZSmIzIRPcArXlcjU/exec?api=productos";
+    const CACHE_STORAGE_KEY = "SJD_CATALOGO_DATA_CACHE";
+    const WA_PHONE = "543878230560";
 
-    // Registro y actualización automática de Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then((reg) => {
-            console.log('[PWA] Service Worker registrado exitosamente.', reg.scope);
-            // Fuerza la comprobación de nuevas versiones en el servidor
-            reg.update();
-          })
-          .catch((err) => console.warn('[PWA] Error al registrar Service Worker:', err));
-      });
+    let ALL_PRODUCTS = [];
+    let FILTERED_PRODUCTS = [];
+    let CATEGORIES = new Set();
+    let DEVOCIONES = new Set();
+    let SACRAMENTOS = new Set();
+    let EVENTOS = new Set();
 
-      // Recarga automática al detectar e instalar una nueva versión
-      let refreshing = false;
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (!refreshing) {
-          refreshing = true;
-          window.location.reload();
+    let currentFilters = {
+      categoria: "Todos",
+      devocion: "",
+      sacramento: "",
+      evento: "",
+      busqueda: ""
+    };
+
+    let currentPage = 1;
+    let itemsPerPage = 24;
+
+    let activeModalProduct = null;
+    let modalPhotosList = [];
+    let modalActivePhotoIndex = 0;
+
+    // --------------------------------------------------------------------------
+    // INICIALIZACIÓN
+    // --------------------------------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      setupThemeToggle();
+      setupEventListeners();
+      inicializarPwa();
+      cargarCatalogo();
+    });
+
+    // --------------------------------------------------------------------------
+    // MODO OSCURO / CLARO
+    // --------------------------------------------------------------------------
+    function setupThemeToggle() {
+      const btn = document.getElementById('themeToggle');
+      if (!btn) return;
+      const icon = btn.querySelector('i');
+      
+      const savedTheme = localStorage.getItem('sjd_theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        icon.classList.replace('fa-moon', 'fa-sun');
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.toggle('light-theme');
+        const isLight = document.body.classList.contains('light-theme');
+        localStorage.setItem('sjd_theme', isLight ? 'light' : 'dark');
+        
+        if (isLight) {
+          icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+          icon.classList.replace('fa-sun', 'fa-moon');
         }
       });
     }
 
-    // Detección de entorno y navegador
+    // --------------------------------------------------------------------------
+    // OBTENCIÓN Y CACHÉ DE PRODUCTOS (OFFLINE-FIRST)
+    // --------------------------------------------------------------------------
+    async function cargarCatalogo() {
+      // 1. Mostrar caché local de inmediato si existe (Carga instantánea)
+      const cached = localStorage.getItem(CACHE_STORAGE_KEY);
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            procesarProductos(parsed);
+          }
+        } catch(e) {
+          console.warn("Error leyendo caché local:", e);
+        }
+      }
+
+      // 2. Consultar API en segundo plano para actualizar datos
+      try {
+        const res = await fetch(API_ENDPOINT);
+        const data = await res.json();
+        
+        if (data && data.success && Array.isArray(data.productos)) {
+          localStorage.setItem(CACHE_STORAGE_KEY, JSON.stringify(data.productos));
+          procesarProductos(data.productos);
+        }
+      } catch (err) {
+        console.warn("No se pudo conectar con la API en vivo. Usando datos locales:", err);
+        // Si no hay productos aún ni caché, mostramos datos de prueba
+        if (ALL_PRODUCTS.length === 0) {
+          procesarProductos(getMockProducts());
+        }
+      }
+    }
+
+    function procesarProductos(productos) {
+      ALL_PRODUCTS = productos;
+      
+      // Extraer valores únicos de filtros
+      CATEGORIES.clear();
+      DEVOCIONES.clear();
+      SACRAMENTOS.clear();
+      EVENTOS.clear();
+
+      CATEGORIES.add("Todos");
+      ALL_PRODUCTS.forEach(p => {
+        if (p.categoria) CATEGORIES.add(p.categoria.trim());
+        if (p.devocion) DEVOCIONES.add(p.devocion.trim());
+        if (p.sacramento) SACRAMENTOS.add(p.sacramento.trim());
+        if (p.evento) EVENTOS.add(p.evento.trim());
+      });
+
+      renderCategoryPills();
+      renderAdvancedFilterOptions();
+      
+      // Leer parámetros iniciales de URL (Deep Linking)
+      aplicarParametrosUrlIniciales();
+      
+      aplicarFiltros();
+    }
+
+    // --------------------------------------------------------------------------
+    // FILTRADO Y BÚSQUEDA
+    // --------------------------------------------------------------------------
+    function aplicarFiltros() {
+      const q = currentFilters.busqueda.toLowerCase().trim();
+
+      FILTERED_PRODUCTS = ALL_PRODUCTS.filter(p => {
+        // Filtro Categoría
+        if (currentFilters.categoria !== "Todos" && p.categoria !== currentFilters.categoria) {
+          return false;
+        }
+        // Filtro Devoción
+        if (currentFilters.devocion && p.devocion !== currentFilters.devocion) {
+          return false;
+        }
+        // Filtro Sacramento
+        if (currentFilters.sacramento && p.sacramento !== currentFilters.sacramento) {
+          return false;
+        }
+        // Filtro Evento
+        if (currentFilters.evento && p.evento !== currentFilters.evento) {
+          return false;
+        }
+        // Búsqueda en texto
+        if (q) {
+          const matchNombre = (p.nombre || '').toLowerCase().includes(q);
+          const matchDesc = (p.descripcion || '').toLowerCase().includes(q);
+          const matchSku = (p.id || '').toString().toLowerCase().includes(q);
+          const matchDevocion = (p.devocion || '').toLowerCase().includes(q);
+          const matchCat = (p.categoria || '').toLowerCase().includes(q);
+          if (!matchNombre && !matchDesc && !matchSku && !matchDevocion && !matchCat) {
+            return false;
+          }
+        }
+        return true;
+      });
+
+      currentPage = 1;
+      renderGrid();
+    }
+
+    function renderCategoryPills() {
+      const container = document.getElementById('categoriesContainer');
+      let html = `<button class="cat-pill ${currentFilters.categoria === 'Todos' ? 'active' : ''}" data-cat="Todos">Todos <span class="count">${ALL_PRODUCTS.length}</span></button>`;
+      
+      Array.from(CATEGORIES).filter(c => c !== "Todos").sort().forEach(cat => {
+        const count = ALL_PRODUCTS.filter(p => p.categoria === cat).length;
+        const active = currentFilters.categoria === cat ? 'active' : '';
+        html += `<button class="cat-pill ${active}" data-cat="${cat}">${cat} <span class="count">${count}</span></button>`;
+      });
+
+      container.innerHTML = html;
+
+      container.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          container.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+          const target = e.currentTarget;
+          target.classList.add('active');
+          currentFilters.categoria = target.getAttribute('data-cat');
+          
+          actualizarUrlParam('categoria', currentFilters.categoria === 'Todos' ? null : currentFilters.categoria);
+          aplicarFiltros();
+        });
+      });
+    }
+
+    function renderAdvancedFilterOptions() {
+      populateSelect('filterDevocion', DEVOCIONES, 'Todas las Devociones', currentFilters.devocion);
+      populateSelect('filterSacramento', SACRAMENTOS, 'Todos los Sacramentos', currentFilters.sacramento);
+      populateSelect('filterEvento', EVENTOS, 'Todos los Eventos', currentFilters.evento);
+    }
+
+    function populateSelect(elemId, setValues, defaultText, selectedValue) {
+      const select = document.getElementById(elemId);
+      if (!select) return;
+      let html = `<option value="">${defaultText}</option>`;
+      Array.from(setValues).sort().forEach(val => {
+        const isSel = val === selectedValue ? 'selected' : '';
+        html += `<option value="${val}" ${isSel}>${val}</option>`;
+      });
+      select.innerHTML = html;
+    }
+
+    // --------------------------------------------------------------------------
+    // RENDERIZADO DE PRODUCTOS & PAGINACIÓN
+    // --------------------------------------------------------------------------
+    function renderGrid() {
+      const grid = document.getElementById('productsGrid');
+      const noResults = document.getElementById('noResults');
+      const pagBar = document.getElementById('paginationBar');
+
+      if (FILTERED_PRODUCTS.length === 0) {
+        grid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        pagBar.classList.add('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+
+      // Paginación
+      const total = FILTERED_PRODUCTS.length;
+      let startIndex = 0;
+      let endIndex = total;
+
+      if (itemsPerPage !== 'all') {
+        const limit = parseInt(itemsPerPage, 10);
+        startIndex = (currentPage - 1) * limit;
+        endIndex = Math.min(startIndex + limit, total);
+      }
+
+      const pagedItems = FILTERED_PRODUCTS.slice(startIndex, endIndex);
+
+      let html = '';
+      pagedItems.forEach(p => {
+        const isAgotado = (p.estado || '').toLowerCase().includes('agotado');
+        const precioFmt = formatPrecio(p.precio);
+        const imgUrl = p.linkImagen || './assets/logo.png';
+        const prodJson = encodeURIComponent(JSON.stringify(p));
+
+        html += `
+          <div class="product-card" onclick="abrirModalPorSku('${p.id}')">
+            <div class="product-img-wrapper">
+              <span class="badge-category">${p.categoria || 'Catálogo'}</span>
+              ${p.devocion ? `<span class="badge-devocion">${p.devocion}</span>` : ''}
+              ${isAgotado ? `<span class="badge-status">Agotado</span>` : ''}
+              <img src="${imgUrl}" alt="${p.nombre}" class="product-img" loading="lazy" onerror="this.src='./assets/logo.png'">
+            </div>
+            <div class="product-info">
+              <h4 class="product-title">${p.nombre}</h4>
+              <div class="product-meta">
+                <span>SKU: ${p.id}</span>
+                ${p.sacramento ? `<span>• ${p.sacramento}</span>` : ''}
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">${precioFmt}</span>
+                <a class="btn-card-wa" href="${generarWaLink(p)}" target="_blank" onclick="event.stopPropagation()" title="Consultar por WhatsApp">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      grid.innerHTML = html;
+
+      // Renderizar barra de paginación
+      if (itemsPerPage !== 'all' && total > parseInt(itemsPerPage, 10)) {
+        renderPaginationControls(total, parseInt(itemsPerPage, 10));
+        pagBar.classList.remove('hidden');
+      } else {
+        pagBar.classList.add('hidden');
+      }
+    }
+
+    function renderPaginationControls(totalItems, perPage) {
+      const pagBar = document.getElementById('paginationBar');
+      const totalPages = Math.ceil(totalItems / perPage);
+
+      let html = `
+        <button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="cambiarPagina(${currentPage - 1})">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      `;
+
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+          html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="cambiarPagina(${i})">${i}</button>`;
+        } else if (i === currentPage - 2 || i === currentPage + 2) {
+          html += `<span style="color:var(--text-light); padding:0 4px;">...</span>`;
+        }
+      }
+
+      html += `
+        <button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="cambiarPagina(${currentPage + 1})">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      `;
+
+      pagBar.innerHTML = html;
+    }
+
+    function cambiarPagina(newPage) {
+      currentPage = newPage;
+      renderGrid();
+      document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // --------------------------------------------------------------------------
+    // MODAL DE DETALLES Y CARRUSEL DE FOTOS
+    // --------------------------------------------------------------------------
+    function abrirModalPorSku(sku) {
+      const prod = ALL_PRODUCTS.find(p => p.id.toString() === sku.toString());
+      if (prod) {
+        abrirProductModal(prod);
+      }
+    }
+
+    function abrirProductModal(prod) {
+      activeModalProduct = prod;
+      
+      // Armar lista de fotos
+      modalPhotosList = [];
+      if (prod.linkImagen) modalPhotosList.push(prod.linkImagen);
+      if (prod.otrasFotos) {
+        const extra = prod.otrasFotos.split(',').map(u => u.trim()).filter(u => u);
+        modalPhotosList = modalPhotosList.concat(extra);
+      }
+      if (modalPhotosList.length === 0) {
+        modalPhotosList.push('./assets/logo.png');
+      }
+
+      modalActivePhotoIndex = 0;
+
+      // Badges
+      const badgesContainer = document.getElementById('modalBadges');
+      let bHtml = `<span class="modal-tag">${prod.categoria || 'Catálogo'}</span>`;
+      if (prod.devocion) bHtml += `<span class="modal-tag">${prod.devocion}</span>`;
+      if (prod.sacramento) bHtml += `<span class="modal-tag">${prod.sacramento}</span>`;
+      if (prod.evento) bHtml += `<span class="modal-tag">${prod.evento}</span>`;
+      badgesContainer.innerHTML = bHtml;
+
+      document.getElementById('modalTitle').textContent = prod.nombre;
+      document.getElementById('modalSku').textContent = `Código de Producto: ${prod.id}`;
+      document.getElementById('modalDesc').textContent = prod.descripcion || 'Artículo devocional de Regalería San Juan Diego.';
+      document.getElementById('modalPrice').textContent = formatPrecio(prod.precio);
+      
+      // WhatsApp Button
+      document.getElementById('modalWaBtn').href = generarWaLink(prod);
+
+      // Render Carrusel & Thumbs
+      actualizarFotoModal();
+
+      // Abrir modal y actualizar URL
+      const modal = document.getElementById('productModal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      actualizarUrlParam('producto', prod.id);
+    }
+
+    function actualizarFotoModal() {
+      const mainImg = document.getElementById('modalMainImg');
+      const prevBtn = document.getElementById('modalPrevBtn');
+      const nextBtn = document.getElementById('modalNextBtn');
+      const thumbsContainer = document.getElementById('modalThumbs');
+
+      mainImg.src = modalPhotosList[modalActivePhotoIndex];
+
+      if (modalPhotosList.length > 1) {
+        prevBtn.classList.remove('hidden');
+        nextBtn.classList.remove('hidden');
+        
+        let tHtml = '';
+        modalPhotosList.forEach((photoUrl, idx) => {
+          tHtml += `<img src="${photoUrl}" class="modal-thumb ${idx === modalActivePhotoIndex ? 'active' : ''}" onclick="seleccionarFotoModal(${idx})" alt="Foto ${idx + 1}">`;
+        });
+        thumbsContainer.innerHTML = tHtml;
+        thumbsContainer.classList.remove('hidden');
+      } else {
+        prevBtn.classList.add('hidden');
+        nextBtn.classList.add('hidden');
+        thumbsContainer.innerHTML = '';
+        thumbsContainer.classList.add('hidden');
+      }
+    }
+
+    function cambiarFotoModal(delta) {
+      modalActivePhotoIndex = (modalActivePhotoIndex + delta + modalPhotosList.length) % modalPhotosList.length;
+      actualizarFotoModal();
+    }
+
+    function seleccionarFotoModal(idx) {
+      modalActivePhotoIndex = idx;
+      actualizarFotoModal();
+    }
+
+    function cerrarProductModal() {
+      const modal = document.getElementById('productModal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      activeModalProduct = null;
+      actualizarUrlParam('producto', null);
+    }
+
+    function cerrarModalClickFuera(e) {
+      if (e.target.id === 'productModal') {
+        cerrarProductModal();
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // HELPERS, DEEP LINKING & COMPARTIR
+    // --------------------------------------------------------------------------
+    function formatPrecio(precio) {
+      if (precio === null || precio === undefined || precio === "") return "A consultar";
+      const num = Number(precio);
+      if (isNaN(num)) return precio;
+      return `$ ${num.toLocaleString('es-AR')}`;
+    }
+
+    function generarWaLink(prod) {
+      const shopUrl = `https://ramblas98.github.io/regaleria-sjd/?producto=${prod.id}`;
+      const adminUrl = `https://script.google.com/macros/s/AKfycbxQTrPru770yAyCsNZewxUvHVJTSms4C2JN9r294AbE9Msjb8_V18gKi8W3JMHpsVJvXA/exec?codigo=${prod.id}`;
+      
+      const msg = `¡Hola Regalería San Juan Diego! Me interesa este producto:
+✨ ${prod.nombre}
+🏷️ Código: ${prod.id}
+💰 Precio: ${formatPrecio(prod.precio)}
+
+🔗 Ver en tienda: ${shopUrl}
+🛠️ Panel Admin: ${adminUrl}`;
+
+      return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+    }
+
+    function compartirProductoActual() {
+      if (!activeModalProduct) return;
+      const shareUrl = `https://ramblas98.github.io/regaleria-sjd/?producto=${activeModalProduct.id}`;
+      const shareTitle = `${activeModalProduct.nombre} | Regalería San Juan Diego`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: shareTitle,
+          text: `Mirá este hermoso artículo católico en Regalería San Juan Diego: ${activeModalProduct.nombre}`,
+          url: shareUrl
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          mostrarToast("¡Enlace del producto copiado al portapapeles!");
+        }).catch(() => {
+          mostrarToast("Enlace: " + shareUrl);
+        });
+      }
+    }
+
+    function mostrarToast(mensaje) {
+      const toast = document.getElementById('toastNotification');
+      toast.textContent = mensaje;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function actualizarUrlParam(param, value) {
+      const url = new URL(window.location);
+      if (value) {
+        url.searchParams.set(param, value);
+      } else {
+        url.searchParams.delete(param);
+      }
+      window.history.pushState({}, '', url);
+    }
+
+    function aplicarParametrosUrlIniciales() {
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // Categoría
+      const cat = urlParams.get('categoria') || urlParams.get('cat');
+      if (cat && CATEGORIES.has(cat)) {
+        currentFilters.categoria = cat;
+        renderCategoryPills();
+      }
+
+      // Búsqueda
+      const search = urlParams.get('buscar') || urlParams.get('q');
+      if (search) {
+        currentFilters.busqueda = search;
+        document.getElementById('searchInput').value = search;
+        document.getElementById('clearSearchBtn').classList.add('visible');
+      }
+
+      // Producto directo
+      const sku = urlParams.get('producto') || urlParams.get('codigo') || urlParams.get('id');
+      if (sku) {
+        setTimeout(() => abrirModalPorSku(sku), 200);
+      }
+    }
+
+    // Manejo del botón "Atrás" del celular
+    window.addEventListener('popstate', () => {
+      const modal = document.getElementById('productModal');
+      if (!modal.classList.contains('hidden')) {
+        cerrarProductModal();
+      }
+    });
+
+    function resetAllFilters() {
+      currentFilters = {
+        categoria: "Todos",
+        devocion: "",
+        sacramento: "",
+        evento: "",
+        busqueda: ""
+      };
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').classList.remove('visible');
+      document.getElementById('filterDevocion').value = '';
+      document.getElementById('filterSacramento').value = '';
+      document.getElementById('filterEvento').value = '';
+      
+      renderCategoryPills();
+      actualizarUrlParam('categoria', null);
+      actualizarUrlParam('buscar', null);
+      aplicarFiltros();
+    }
+
+    function scrollToCatalogo(e) {
+      if (e) e.preventDefault();
+      document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // --------------------------------------------------------------------------
+    // LISTENERS DE INTERFAZ
+    // --------------------------------------------------------------------------
+    function setupEventListeners() {
+      // Búsqueda con debounce
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      let debounceTimer = null;
+
+      searchInput.addEventListener('input', (e) => {
+        const val = e.target.value;
+        if (val) {
+          clearBtn.classList.add('visible');
+        } else {
+          clearBtn.classList.remove('visible');
+        }
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          currentFilters.busqueda = val;
+          actualizarUrlParam('buscar', val ? val : null);
+          aplicarFiltros();
+        }, 250);
+      });
+
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.classList.remove('visible');
+        currentFilters.busqueda = '';
+        actualizarUrlParam('buscar', null);
+        aplicarFiltros();
+      });
+
+      // Filtros selectores
+      document.getElementById('filterDevocion').addEventListener('change', (e) => {
+        currentFilters.devocion = e.target.value;
+        aplicarFiltros();
+      });
+      document.getElementById('filterSacramento').addEventListener('change', (e) => {
+        currentFilters.sacramento = e.target.value;
+        aplicarFiltros();
+      });
+      document.getElementById('filterEvento').addEventListener('change', (e) => {
+        currentFilters.evento = e.target.value;
+        aplicarFiltros();
+      });
+      document.getElementById('filterItemsPerPage').addEventListener('change', (e) => {
+        itemsPerPage = e.target.value;
+        currentPage = 1;
+        renderGrid();
+      });
+
+      // Tecla Escape para cerrar modal
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          cerrarProductModal();
+          cerrarInstallModal();
+        }
+      });
+    }
+
+    // --------------------------------------------------------------------------
+    // LOGICA PWA & SERVICE WORKER
+    // --------------------------------------------------------------------------
     let deferredPrompt = null;
     const ua = window.navigator.userAgent.toLowerCase();
     const isIos = /iphone|ipad|ipod/.test(ua);
@@ -668,114 +1936,110 @@
     const isAndroid = /android/.test(ua);
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true || document.referrer.includes('android-app://');
 
-    // Inicialización al cargar la página
-    document.addEventListener('DOMContentLoaded', () => {
-      const heroBtn = document.getElementById('heroInstallBtn');
-      if (!isStandalone) {
-        // En cualquier navegador (Firefox, Opera, Chrome, Safari) mostramos el botón en el Hero
-        if (heroBtn) heroBtn.classList.remove('hidden');
-      } else {
-        // Ya está instalada y ejecutándose en modo app
-        if (heroBtn) heroBtn.classList.add('hidden');
-      }
-    });
+    function inicializarPwa() {
+      // Registro y actualización de Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then((reg) => {
+              console.log('[PWA] Service Worker registrado exitosamente.', reg.scope);
+              reg.update();
+            })
+            .catch((err) => console.warn('[PWA] Error al registrar Service Worker:', err));
+        });
 
-    // Captura del prompt nativo en navegadores Chromium
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
+      }
+
+      // Visibilidad del botón de instalación
       const heroBtn = document.getElementById('heroInstallBtn');
       if (!isStandalone && heroBtn) {
         heroBtn.classList.remove('hidden');
       }
-    });
 
-    // Función principal de instalación
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (heroBtn) heroBtn.classList.remove('hidden');
+      });
+
+      window.addEventListener('appinstalled', () => {
+        deferredPrompt = null;
+        if (heroBtn) heroBtn.classList.add('hidden');
+      });
+    }
+
     function instalarPwa() {
       if (deferredPrompt) {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
-            console.log('[PWA] Usuario aceptó la instalación nativa.');
+            console.log('[PWA] Usuario aceptó la instalación.');
           }
           deferredPrompt = null;
         });
-        return;
+      } else {
+        mostrarGuiaInstalacion();
       }
-
-      // Si el navegador no provee prompt automático (Firefox Android, Opera Android, iOS Safari, etc.)
-      mostrarGuiaInstalacion();
     }
 
     function mostrarGuiaInstalacion() {
       const modal = document.getElementById('installGuideModal');
-      const title = document.getElementById('modalTitle');
-      const subtitle = document.getElementById('modalSubtitle');
+      const title = document.getElementById('installGuideTitle');
       const steps = document.getElementById('modalSteps');
 
       if (isIos) {
         title.textContent = 'Instalar en iPhone / iPad';
-        subtitle.textContent = 'Agregá la App a tu pantalla de inicio desde Safari:';
         steps.innerHTML = `
           <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-arrow-up-from-bracket"></i></div>
-            <div>1. Tocá el botón <strong>Compartir</strong> en la barra inferior de Safari.</div>
+            <div class="install-step-num">1</div>
+            <div>Tocá el botón <strong>Compartir</strong> <i class="fas fa-arrow-up-from-bracket" style="color:var(--color-secondary);"></i> en la barra de Safari.</div>
           </div>
           <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-square-plus"></i></div>
-            <div>2. Desplazate hacia abajo y seleccioná <strong>"Añadir a la pantalla de inicio"</strong>.</div>
+            <div class="install-step-num">2</div>
+            <div>Buscá y seleccioná <strong>"Agregar a Inicio"</strong> <i class="fas fa-plus-square" style="color:var(--color-secondary);"></i>.</div>
           </div>
         `;
-      } else if (isFirefox && isAndroid) {
+      } else if (isFirefox) {
         title.textContent = 'Instalar en Firefox';
-        subtitle.textContent = 'Firefox en Android te permite instalar la App fácilmente:';
         steps.innerHTML = `
           <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-house-medical"></i></div>
-            <div>1. Tocá el botón de <strong>Instalar</strong> en la barra de direcciones o abrí el menú de <strong>3 puntos (⋮)</strong>.</div>
+            <div class="install-step-num">1</div>
+            <div>Tocá el menú de <strong>tres puntos (⋮)</strong> en la barra de direcciones.</div>
           </div>
           <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-download"></i></div>
-            <div>2. Seleccioná <strong>"Instalar"</strong> o <strong>"Añadir a la pantalla de inicio"</strong>.</div>
+            <div class="install-step-num">2</div>
+            <div>Seleccioná <strong>"Instalar"</strong> o <strong>"Añadir a la pantalla principal"</strong>.</div>
           </div>
         `;
-      } else if (isOpera && isAndroid) {
+      } else if (isOpera) {
         title.textContent = 'Instalar en Opera';
-        subtitle.textContent = 'Instalá la App directamente desde el menú de Opera:';
         steps.innerHTML = `
           <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-ellipsis-vertical"></i></div>
-            <div>1. Tocá el menú de <strong>3 puntos (⋮)</strong> o el icono del navegador Opera.</div>
+            <div class="install-step-num">1</div>
+            <div>Tocá el botón de menú de Opera (icono <strong>O</strong> o <strong>⋮</strong>).</div>
           </div>
           <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-mobile-screen-button"></i></div>
-            <div>2. Seleccioná <strong>"Añadir a la pantalla de inicio"</strong> o <strong>"Instalar"</strong>.</div>
-          </div>
-        `;
-      } else if (isAndroid) {
-        title.textContent = 'Instalar en Android';
-        subtitle.textContent = 'Instalá la App desde el menú de tu navegador:';
-        steps.innerHTML = `
-          <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-ellipsis-vertical"></i></div>
-            <div>1. Abrí el menú de <strong>3 puntos (⋮)</strong> en la esquina superior derecha.</div>
-          </div>
-          <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-download"></i></div>
-            <div>2. Seleccioná <strong>"Instalar aplicación"</strong> o <strong>"Añadir a la pantalla principal"</strong>.</div>
+            <div class="install-step-num">2</div>
+            <div>Elegí <strong>"Añadir a inicio"</strong>.</div>
           </div>
         `;
       } else {
-        title.textContent = 'Instalar en tu Computadora';
-        subtitle.textContent = 'Creá un acceso directo en tu escritorio:';
+        title.textContent = 'Instalar Aplicación';
         steps.innerHTML = `
           <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-arrow-down-to-bracket"></i></div>
-            <div>1. Buscá el icono de <strong>Instalar</strong> en la barra de direcciones del navegador.</div>
+            <div class="install-step-num">1</div>
+            <div>Tocá el menú del navegador <strong>(⋮)</strong> arriba a la derecha.</div>
           </div>
           <div class="install-step-item">
-            <div class="install-step-num"><i class="fas fa-desktop"></i></div>
-            <div>2. Hacé clic en <strong>"Instalar"</strong> para tenerla disponible como aplicación independiente.</div>
+            <div class="install-step-num">2</div>
+            <div>Seleccioná <strong>"Instalar aplicación"</strong> o <strong>"Añadir a pantalla de inicio"</strong>.</div>
           </div>
         `;
       }
@@ -784,17 +2048,20 @@
     }
 
     function cerrarInstallModal(e) {
-      if (!e || e.target.id === 'installGuideModal' || e.target.classList.contains('install-close') || e.target.tagName === 'BUTTON') {
-        const modal = document.getElementById('installGuideModal');
-        if (modal) modal.classList.add('hidden');
+      if (!e || e.target.id === 'installGuideModal' || e.target.closest('.modal-close-btn') || e.target.tagName === 'BUTTON') {
+        document.getElementById('installGuideModal').classList.add('hidden');
       }
     }
 
-    window.addEventListener('appinstalled', () => {
-      console.log('[PWA] Aplicación instalada correctamente.');
-      const heroBtn = document.getElementById('heroInstallBtn');
-      if (heroBtn) heroBtn.classList.add('hidden');
-    });
+    // Mock de fallback si la API no está disponible
+    function getMockProducts() {
+      return [
+        { id: 1, nombre: "Rosario de Madera de Olivo", categoria: "Rosarios", devocion: "San Benito", sacramento: "", evento: "", descripcion: "Rosario artesanal con cuentas de madera de olivo y medalla de San Benito.", precio: 4500, linkImagen: "./assets/logo.png", otrasFotos: "", estado: "Disponible" },
+        { id: 2, nombre: "Imagen Virgen de Guadalupe (Resina 20cm)", categoria: "Imágenes", devocion: "Virgen de Guadalupe", sacramento: "", evento: "", descripcion: "Hermosa imagen pintada a mano con detalles dorados finos.", precio: 9800, linkImagen: "./assets/logo.png", otrasFotos: "", estado: "Disponible" },
+        { id: 3, nombre: "Estampa Laminada San Juan Diego", categoria: "Estampitas", devocion: "San Juan Diego", sacramento: "", evento: "", descripcion: "Estampa plastificada con oración tradicional al dorso.", precio: 500, linkImagen: "./assets/logo.png", otrasFotos: "", estado: "Disponible" },
+        { id: 4, nombre: "Set de Bautismo San Juan Diego", categoria: "Regalos", devocion: "Espíritu Santo", sacramento: "Bautismo", evento: "Bautismo", descripcion: "Incluye cirio bautismal, toallita bordada y concha bautismal.", precio: 12500, linkImagen: "./assets/logo.png", otrasFotos: "", estado: "Disponible" }
+      ];
+    }
   </script>
 </body>
 </html>

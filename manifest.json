@@ -45,7 +45,7 @@
       "name": "Ver Catálogo",
       "short_name": "Catálogo",
       "description": "Explora nuestro catálogo de productos religiosos",
-      "url": "https://script.google.com/macros/s/AKfycbyakJY1f84w-L5PQ14bosSssX91T_aXhKCeumGei_Bn5uH784s8ZSmIzIRPcArXlcjU/exec",
+      "url": "./#catalogo",
       "icons": [
         {
           "src": "./assets/icon-192.png",

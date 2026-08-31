@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sjd-landing-v6';
+const CACHE_NAME = 'sjd-landing-v7';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
@@ -59,27 +59,53 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Recursos estáticos (imágenes, estilos, fuentes locales y de CDN): Cache-First con actualización en segundo plano
+  // API de Productos de Apps Script (Stale-While-Revalidate)
+  if (url.searchParams.has('api')) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) => {
+        return cache.match(event.request).then((cachedResponse) => {
+          const fetchPromise = fetch(event.request)
+            .then((networkResponse) => {
+              if (networkResponse && networkResponse.status === 200) {
+                cache.put(event.request, networkResponse.clone());
+              }
+              return networkResponse;
+            })
+            .catch(() => cachedResponse);
+
+          return cachedResponse || fetchPromise;
+        });
+      })
+    );
+    return;
+  }
+
+  // Recursos estáticos e imágenes de Google Photos / Drive (Cache-First)
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
-        // En segundo plano intentamos actualizar si es origen propio o CDN
+        // En segundo plano actualizamos si hay conexión
         fetch(event.request)
           .then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
               caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse));
             }
           })
-          .catch(() => { /* Sin conexión, usa la versión en caché */ });
+          .catch(() => {});
         return cachedResponse;
       }
 
       return fetch(event.request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
+        if (networkResponse && (networkResponse.status === 200 || networkResponse.type === 'opaque')) {
           const responseClone = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
         }
         return networkResponse;
+      }).catch(() => {
+        // Si es una imagen y falla, devolver el logo por defecto si está en caché
+        if (event.request.destination === 'image') {
+          return caches.match('./assets/logo.png');
+        }
       });
     })
   );
