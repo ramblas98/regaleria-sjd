@@ -636,12 +636,25 @@
     // Año automático
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Registro de Service Worker
+    // Registro y actualización automática de Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
-          .then((reg) => console.log('[PWA] Service Worker registrado exitosamente.', reg.scope))
+          .then((reg) => {
+            console.log('[PWA] Service Worker registrado exitosamente.', reg.scope);
+            // Fuerza la comprobación de nuevas versiones en el servidor
+            reg.update();
+          })
           .catch((err) => console.warn('[PWA] Error al registrar Service Worker:', err));
+      });
+
+      // Recarga automática al detectar e instalar una nueva versión
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!refreshing) {
+          refreshing = true;
+          window.location.reload();
+        }
       });
     }
 
