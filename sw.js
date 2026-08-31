@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sjd-landing-v2';
+const CACHE_NAME = 'sjd-landing-v3';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
