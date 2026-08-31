@@ -353,117 +353,6 @@
     .contact-card.youtube { border-top: 4px solid #FF0000; }
     .contact-card.youtube .icon { color: #FF0000; }
 
-    /* ── PWA BANNER FLOTANTE ── */
-    .pwa-banner {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 92%;
-      max-width: 440px;
-      background: rgba(45, 40, 54, 0.95);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(217, 179, 108, 0.4);
-      border-radius: 16px;
-      padding: 0.9rem 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
-      z-index: 999;
-      animation: slideUpBanner 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes slideUpBanner {
-      from { transform: translate(-50%, 50px); opacity: 0; }
-      to { transform: translate(-50%, 0); opacity: 1; }
-    }
-
-    .pwa-banner.hidden {
-      display: none !important;
-    }
-
-    .pwa-banner-content {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .pwa-banner-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      flex-shrink: 0;
-    }
-
-    .pwa-banner-text {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-
-    .pwa-banner-text strong {
-      font-size: 0.92rem;
-      color: var(--color-secondary-light);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .pwa-banner-text small {
-      font-size: 0.76rem;
-      color: var(--text-light);
-      line-height: 1.2;
-    }
-
-    .pwa-banner-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-shrink: 0;
-    }
-
-    .pwa-btn-install {
-      background: var(--color-secondary);
-      color: #1E1B24;
-      border: none;
-      padding: 0.55rem 1rem;
-      border-radius: 20px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      box-shadow: 0 2px 8px rgba(217, 179, 108, 0.3);
-    }
-
-    .pwa-btn-install:hover {
-      background: var(--color-secondary-light);
-      transform: scale(1.05);
-    }
-
-    .pwa-btn-dismiss {
-      background: transparent;
-      border: none;
-      color: var(--text-light);
-      font-size: 1.3rem;
-      cursor: pointer;
-      padding: 2px 6px;
-      line-height: 1;
-      border-radius: 50%;
-      transition: var(--transition);
-    }
-
-    .pwa-btn-dismiss:hover {
-      color: white;
-      background: rgba(255, 255, 255, 0.1);
-    }
 
     /* ── MODAL GUÍA DE INSTALACIÓN MULTI-NAVEGADOR ── */
     .install-modal {
@@ -683,21 +572,6 @@
     </div>
   </section>
 
-  <!-- ── BANNER PWA FLOTANTE ── -->
-  <div id="pwaBanner" class="pwa-banner hidden">
-    <div class="pwa-banner-content">
-      <img src="./assets/icon-192.png" alt="SJD" class="pwa-banner-icon">
-      <div class="pwa-banner-text">
-        <strong>Regalería San Juan Diego</strong>
-        <small>Instalá la App en tu celular para acceso directo</small>
-      </div>
-    </div>
-    <div class="pwa-banner-actions">
-      <button class="pwa-btn-dismiss" onclick="cerrarPwaBanner()" title="Cerrar">&times;</button>
-      <button class="pwa-btn-install" onclick="instalarPwa()"><i class="fas fa-download"></i> Instalar</button>
-    </div>
-  </div>
-
   <!-- ── MODAL GUÍA DE INSTALACIÓN MULTI-NAVEGADOR ── -->
   <div id="installGuideModal" class="install-modal hidden" onclick="cerrarInstallModal(event)">
     <div class="install-modal-card" onclick="event.stopPropagation()">
@@ -745,23 +619,12 @@
     // Inicialización al cargar la página
     document.addEventListener('DOMContentLoaded', () => {
       const heroBtn = document.getElementById('heroInstallBtn');
-      const pwaBanner = document.getElementById('pwaBanner');
-
       if (!isStandalone) {
         // En cualquier navegador (Firefox, Opera, Chrome, Safari) mostramos el botón en el Hero
         if (heroBtn) heroBtn.classList.remove('hidden');
-
-        // Mostrar banner flotante si no fue cerrado en la sesión
-        const dismissed = sessionStorage.getItem('sjd_pwa_dismissed');
-        if (!dismissed && pwaBanner) {
-          setTimeout(() => {
-            pwaBanner.classList.remove('hidden');
-          }, 1200);
-        }
       } else {
         // Ya está instalada y ejecutándose en modo app
         if (heroBtn) heroBtn.classList.add('hidden');
-        if (pwaBanner) pwaBanner.classList.add('hidden');
       }
     });
 
@@ -782,7 +645,6 @@
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
             console.log('[PWA] Usuario aceptó la instalación nativa.');
-            cerrarPwaBanner();
           }
           deferredPrompt = null;
         });
@@ -869,12 +731,6 @@
       modal.classList.remove('hidden');
     }
 
-    function cerrarPwaBanner() {
-      const banner = document.getElementById('pwaBanner');
-      if (banner) banner.classList.add('hidden');
-      sessionStorage.setItem('sjd_pwa_dismissed', 'true');
-    }
-
     function cerrarInstallModal(e) {
       if (!e || e.target.id === 'installGuideModal' || e.target.classList.contains('install-close') || e.target.tagName === 'BUTTON') {
         const modal = document.getElementById('installGuideModal');
@@ -884,7 +740,6 @@
 
     window.addEventListener('appinstalled', () => {
       console.log('[PWA] Aplicación instalada correctamente.');
-      cerrarPwaBanner();
       const heroBtn = document.getElementById('heroInstallBtn');
       if (heroBtn) heroBtn.classList.add('hidden');
     });
