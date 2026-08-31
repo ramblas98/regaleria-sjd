@@ -57,7 +57,7 @@
       "name": "Consultar por WhatsApp",
       "short_name": "WhatsApp",
       "description": "Escribinos directamente a nuestro WhatsApp",
-      "url": "https://wa.me/543878230560",
+      "url": "https://wa.me/543878230560?text=Hola%20Regaleria%2C%20me%20interesa%20consultarte%20por...",
       "icons": [
         {
           "src": "./assets/icon-192.png",
