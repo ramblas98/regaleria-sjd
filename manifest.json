@@ -1,30 +1,69 @@
 {
+  "id": "./?source=pwa",
   "name": "Regalería San Juan Diego",
-  "short_name": "Regalería SJD",
+  "short_name": "Regalería San Juan Diego",
   "description": "Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica. Vive, comparte y regala.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
   "background_color": "#1E1B24",
   "theme_color": "#4A3560",
   "orientation": "portrait-primary",
   "lang": "es",
+  "categories": [
+    "shopping",
+    "lifestyle",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "./assets/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "./assets/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "./assets/icon-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Catálogo",
+      "short_name": "Catálogo",
+      "description": "Explora nuestro catálogo de productos religiosos",
+      "url": "https://script.google.com/macros/s/AKfycbyakJY1f84w-L5PQ14bosSssX91T_aXhKCeumGei_Bn5uH784s8ZSmIzIRPcArXlcjU/exec",
+      "icons": [
+        {
+          "src": "./assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Consultar por WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Escribinos directamente a nuestro WhatsApp",
+      "url": "https://wa.me/543878230560",
+      "icons": [
+        {
+          "src": "./assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }

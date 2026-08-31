@@ -3,7 +3,7 @@
 <head>
   <base target="_top">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Regalería San Juan Diego</title>
   <meta name="description" content="Adornos, Regalos, Estampitas, Rosarios e Imágenes para expresar tu fe católica. Vive, comparte, regala.">
 
@@ -16,7 +16,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Regalería SJD">
+  <meta name="apple-mobile-web-app-title" content="Regalería San Juan Diego">
+  <meta name="application-name" content="Regalería San Juan Diego">
   <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
   <!-- Open Graph / Vistas Previas (WhatsApp, Facebook, etc.) -->
@@ -464,20 +465,21 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* ── MODAL GUÍA IOS ── */
-    .ios-modal {
+    /* ── MODAL GUÍA DE INSTALACIÓN MULTI-NAVEGADOR ── */
+    .install-modal {
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 1000;
+      padding: 1rem;
       animation: fadeInModal 0.3s ease;
     }
 
-    .ios-modal.hidden {
+    .install-modal.hidden {
       display: none !important;
     }
 
@@ -486,76 +488,98 @@
       to { opacity: 1; }
     }
 
-    .ios-modal-card {
+    .install-modal-card {
       background: var(--bg-card);
-      border: 1px solid rgba(217, 179, 108, 0.35);
+      border: 1px solid rgba(217, 179, 108, 0.4);
       border-radius: var(--radius);
-      padding: 2rem 1.8rem;
-      max-width: 380px;
-      width: 90%;
+      padding: 2.2rem 1.8rem 1.8rem;
+      max-width: 420px;
+      width: 100%;
       text-align: center;
       position: relative;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      animation: scaleUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .ios-close {
+    @keyframes scaleUpModal {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .install-close {
       position: absolute;
-      top: 10px;
-      right: 12px;
+      top: 12px;
+      right: 14px;
       background: transparent;
       border: none;
       color: var(--text-light);
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       cursor: pointer;
-      padding: 4px;
+      padding: 4px 8px;
       line-height: 1;
+      border-radius: 50%;
+      transition: var(--transition);
     }
 
-    .ios-modal-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
+    .install-close:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .install-modal-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 16px;
       margin-bottom: 1rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(217, 179, 108, 0.3);
     }
 
-    .ios-modal-card h3 {
+    .install-modal-card h3 {
       font-family: var(--font-title);
       color: var(--color-secondary-light);
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       margin-bottom: 0.4rem;
     }
 
-    .ios-modal-subtitle {
-      font-size: 0.85rem;
+    .install-modal-subtitle {
+      font-size: 0.88rem;
       color: var(--text-light);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.3rem;
+      line-height: 1.4;
     }
 
-    .ios-steps-list {
+    .install-steps-list {
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
-      background: rgba(30, 27, 36, 0.6);
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid rgba(155, 126, 189, 0.2);
+      gap: 0.9rem;
+      background: rgba(30, 27, 36, 0.65);
+      padding: 1.2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(155, 126, 189, 0.25);
     }
 
-    .ios-step-item {
+    .install-step-item {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      font-size: 0.86rem;
+      gap: 12px;
+      font-size: 0.88rem;
       color: var(--text-dark);
+      line-height: 1.45;
     }
 
-    .ios-step-num {
+    .install-step-item strong {
+      color: var(--color-secondary-light);
+    }
+
+    .install-step-num {
       color: var(--color-secondary);
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 1px;
+      width: 24px;
+      text-align: center;
     }
 
     .hidden {
@@ -585,7 +609,7 @@
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <img src="https://lh3.googleusercontent.com/d/1Amrwrzc4n1ipORjYel-rhi9tJOZNhCu-" alt="Logo San Juan Diego" class="header-logo">
+      <img src="./assets/logo.png" alt="Logo San Juan Diego" class="header-logo">
 
       <h1 class="brand-name">Regalería San Juan Diego</h1>
       <p class="brand-tagline">Vive, comparte, regala.</p>
@@ -674,26 +698,19 @@
     </div>
   </div>
 
-  <!-- ── MODAL GUÍA IOS ── -->
-  <div id="iosInstallModal" class="ios-modal hidden" onclick="cerrarIosModal(event)">
-    <div class="ios-modal-card" onclick="event.stopPropagation()">
-      <button class="ios-close" onclick="cerrarIosModal()">&times;</button>
-      <img src="./assets/icon-192.png" alt="SJD" class="ios-modal-icon">
-      <h3>Instalar en iPhone / iPad</h3>
-      <p class="ios-modal-subtitle">Agregá la App a tu pantalla de inicio en 2 simples pasos:</p>
+  <!-- ── MODAL GUÍA DE INSTALACIÓN MULTI-NAVEGADOR ── -->
+  <div id="installGuideModal" class="install-modal hidden" onclick="cerrarInstallModal(event)">
+    <div class="install-modal-card" onclick="event.stopPropagation()">
+      <button class="install-close" onclick="cerrarInstallModal()">&times;</button>
+      <img src="./assets/icon-192.png" alt="SJD" class="install-modal-icon">
+      <h3 id="modalTitle">Instalar en tu Dispositivo</h3>
+      <p id="modalSubtitle" class="install-modal-subtitle">Agregá la App a tu pantalla de inicio en 2 simples pasos:</p>
       
-      <div class="ios-steps-list">
-        <div class="ios-step-item">
-          <div class="ios-step-num"><i class="fas fa-arrow-up-from-bracket"></i></div>
-          <div>1. Tocá el botón <strong>Compartir</strong> en la barra inferior de Safari.</div>
-        </div>
-        <div class="ios-step-item">
-          <div class="ios-step-num"><i class="fas fa-square-plus"></i></div>
-          <div>2. Desplazate hacia abajo y seleccioná <strong>"Añadir a la pantalla de inicio"</strong>.</div>
-        </div>
+      <div id="modalSteps" class="install-steps-list">
+        <!-- Pasos inyectados dinámicamente según el navegador -->
       </div>
 
-      <button class="btn btn-primary" style="margin-top:1.5rem;width:100%;justify-content:center;" onclick="cerrarIosModal()">¡Entendido!</button>
+      <button class="btn btn-primary" style="margin-top:1.5rem;width:100%;justify-content:center;" onclick="cerrarInstallModal()">¡Entendido!</button>
     </div>
   </div>
 
@@ -716,63 +733,152 @@
       });
     }
 
-    // Manejo de instalación PWA
+    // Detección de entorno y navegador
     let deferredPrompt = null;
-    const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    const ua = window.navigator.userAgent.toLowerCase();
+    const isIos = /iphone|ipad|ipod/.test(ua);
+    const isFirefox = /firefox|fxios/.test(ua);
+    const isOpera = /opr\/|opera/.test(ua);
+    const isAndroid = /android/.test(ua);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true || document.referrer.includes('android-app://');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      
+    // Inicialización al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroBtn = document.getElementById('heroInstallBtn');
+      const pwaBanner = document.getElementById('pwaBanner');
+
       if (!isStandalone) {
-        const dismissed = sessionStorage.getItem('sjd_pwa_dismissed');
-        if (!dismissed) {
-          document.getElementById('pwaBanner').classList.remove('hidden');
-        }
-        const heroBtn = document.getElementById('heroInstallBtn');
+        // En cualquier navegador (Firefox, Opera, Chrome, Safari) mostramos el botón en el Hero
         if (heroBtn) heroBtn.classList.remove('hidden');
+
+        // Mostrar banner flotante si no fue cerrado en la sesión
+        const dismissed = sessionStorage.getItem('sjd_pwa_dismissed');
+        if (!dismissed && pwaBanner) {
+          setTimeout(() => {
+            pwaBanner.classList.remove('hidden');
+          }, 1200);
+        }
+      } else {
+        // Ya está instalada y ejecutándose en modo app
+        if (heroBtn) heroBtn.classList.add('hidden');
+        if (pwaBanner) pwaBanner.classList.add('hidden');
       }
     });
 
-    // En iOS Safari, si no está instalada, mostrar opciones tras 2.5 segundos
-    if (isIos && !isStandalone) {
-      setTimeout(() => {
-        const dismissed = sessionStorage.getItem('sjd_pwa_dismissed');
-        if (!dismissed) {
-          document.getElementById('pwaBanner').classList.remove('hidden');
-        }
-        const heroBtn = document.getElementById('heroInstallBtn');
-        if (heroBtn) heroBtn.classList.remove('hidden');
-      }, 2500);
-    }
+    // Captura del prompt nativo en navegadores Chromium
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const heroBtn = document.getElementById('heroInstallBtn');
+      if (!isStandalone && heroBtn) {
+        heroBtn.classList.remove('hidden');
+      }
+    });
 
+    // Función principal de instalación
     function instalarPwa() {
       if (deferredPrompt) {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
-            console.log('[PWA] Usuario aceptó la instalación.');
+            console.log('[PWA] Usuario aceptó la instalación nativa.');
             cerrarPwaBanner();
           }
           deferredPrompt = null;
         });
-      } else if (isIos) {
-        document.getElementById('iosInstallModal').classList.remove('hidden');
-      } else {
-        // Fallback genérico para otros navegadores
-        alert('Para instalar la App, abrí el menú de tu navegador (los 3 puntos) y seleccioná "Instalar aplicación" o "Añadir a la pantalla de inicio".');
+        return;
       }
+
+      // Si el navegador no provee prompt automático (Firefox Android, Opera Android, iOS Safari, etc.)
+      mostrarGuiaInstalacion();
+    }
+
+    function mostrarGuiaInstalacion() {
+      const modal = document.getElementById('installGuideModal');
+      const title = document.getElementById('modalTitle');
+      const subtitle = document.getElementById('modalSubtitle');
+      const steps = document.getElementById('modalSteps');
+
+      if (isIos) {
+        title.textContent = 'Instalar en iPhone / iPad';
+        subtitle.textContent = 'Agregá la App a tu pantalla de inicio desde Safari:';
+        steps.innerHTML = `
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-arrow-up-from-bracket"></i></div>
+            <div>1. Tocá el botón <strong>Compartir</strong> en la barra inferior de Safari.</div>
+          </div>
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-square-plus"></i></div>
+            <div>2. Desplazate hacia abajo y seleccioná <strong>"Añadir a la pantalla de inicio"</strong>.</div>
+          </div>
+        `;
+      } else if (isFirefox && isAndroid) {
+        title.textContent = 'Instalar en Firefox';
+        subtitle.textContent = 'Firefox en Android te permite instalar la App fácilmente:';
+        steps.innerHTML = `
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-house-medical"></i></div>
+            <div>1. Tocá el botón de <strong>Instalar</strong> en la barra de direcciones o abrí el menú de <strong>3 puntos (⋮)</strong>.</div>
+          </div>
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-download"></i></div>
+            <div>2. Seleccioná <strong>"Instalar"</strong> o <strong>"Añadir a la pantalla de inicio"</strong>.</div>
+          </div>
+        `;
+      } else if (isOpera && isAndroid) {
+        title.textContent = 'Instalar en Opera';
+        subtitle.textContent = 'Instalá la App directamente desde el menú de Opera:';
+        steps.innerHTML = `
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-ellipsis-vertical"></i></div>
+            <div>1. Tocá el menú de <strong>3 puntos (⋮)</strong> o el icono del navegador Opera.</div>
+          </div>
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-mobile-screen-button"></i></div>
+            <div>2. Seleccioná <strong>"Añadir a la pantalla de inicio"</strong> o <strong>"Instalar"</strong>.</div>
+          </div>
+        `;
+      } else if (isAndroid) {
+        title.textContent = 'Instalar en Android';
+        subtitle.textContent = 'Instalá la App desde el menú de tu navegador:';
+        steps.innerHTML = `
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-ellipsis-vertical"></i></div>
+            <div>1. Abrí el menú de <strong>3 puntos (⋮)</strong> en la esquina superior derecha.</div>
+          </div>
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-download"></i></div>
+            <div>2. Seleccioná <strong>"Instalar aplicación"</strong> o <strong>"Añadir a la pantalla principal"</strong>.</div>
+          </div>
+        `;
+      } else {
+        title.textContent = 'Instalar en tu Computadora';
+        subtitle.textContent = 'Creá un acceso directo en tu escritorio:';
+        steps.innerHTML = `
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-arrow-down-to-bracket"></i></div>
+            <div>1. Buscá el icono de <strong>Instalar</strong> en la barra de direcciones del navegador.</div>
+          </div>
+          <div class="install-step-item">
+            <div class="install-step-num"><i class="fas fa-desktop"></i></div>
+            <div>2. Hacé clic en <strong>"Instalar"</strong> para tenerla disponible como aplicación independiente.</div>
+          </div>
+        `;
+      }
+
+      modal.classList.remove('hidden');
     }
 
     function cerrarPwaBanner() {
-      document.getElementById('pwaBanner').classList.add('hidden');
+      const banner = document.getElementById('pwaBanner');
+      if (banner) banner.classList.add('hidden');
       sessionStorage.setItem('sjd_pwa_dismissed', 'true');
     }
 
-    function cerrarIosModal(e) {
-      if (!e || e.target.id === 'iosInstallModal' || e.target.classList.contains('ios-close') || e.target.tagName === 'BUTTON') {
-        document.getElementById('iosInstallModal').classList.add('hidden');
+    function cerrarInstallModal(e) {
+      if (!e || e.target.id === 'installGuideModal' || e.target.classList.contains('install-close') || e.target.tagName === 'BUTTON') {
+        const modal = document.getElementById('installGuideModal');
+        if (modal) modal.classList.add('hidden');
       }
     }
 
